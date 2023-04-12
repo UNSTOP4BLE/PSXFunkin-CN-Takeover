@@ -97,6 +97,8 @@ void Back_Week1_Free(StageBack *back)
 {
     Back_Week1 *this = (Back_Week1*)back;
     
+    Mem_Free(this->arc_jake);
+
     //Free structure
     Mem_Free(this);
 }
@@ -117,7 +119,6 @@ StageBack *Back_Week1_New(void)
     //Load background textures
     IO_Data arc_back = IO_Read("\\WEEK1\\BACK.ARC;1");
     Gfx_LoadTex(&this->tex_back0, Archive_Find(arc_back, "back0.tim"), 0);
-    Gfx_LoadTex(&this->tex_back1, Archive_Find(arc_back, "back1.tim"), 0);
     Mem_Free(arc_back);
 
     //Load jake textures
