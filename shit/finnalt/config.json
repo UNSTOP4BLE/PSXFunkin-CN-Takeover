@@ -6,11 +6,6 @@
 			"hname"   : "Idle"
 		},
 		{
-			"fnfanim" : "idle-alt",
-			"imgname" : "idleb",
-			"hname"   : "Idlealt"
-		},
-		{
 			"fnfanim" : "singLEFT",
 			"imgname" : "left",
 			"hname"   : "Left"

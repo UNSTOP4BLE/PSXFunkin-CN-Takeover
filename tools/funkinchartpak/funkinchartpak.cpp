@@ -132,7 +132,7 @@ int main(int argc, char *argv[])
             new_note.type = (uint8_t)j[1] & (3 | NOTE_FLAG_OPPONENT);
             if (is_opponent)
                 new_note.type ^= NOTE_FLAG_OPPONENT;
-            if (j[3] == true)
+            if (j[3] == "Alt Animation")
                 new_note.type |= NOTE_FLAG_ALT_ANIM;
             else if ((new_note.type & NOTE_FLAG_OPPONENT) && is_alt)
                 new_note.type |= NOTE_FLAG_ALT_ANIM;

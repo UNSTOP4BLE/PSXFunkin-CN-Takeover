@@ -12,16 +12,12 @@
     <SubTexture name="FINN ALT  2 IDLE0007" x="2467" y="2333" width="493" height="741" frameX="-11" frameY="-1" frameWidth="508" frameHeight="749"/>
     <SubTexture name="FINN ALT 2 DOWN0000" x="3977" y="0" width="828" height="759" frameX="-34" frameY="-10" frameWidth="862" frameHeight="769"/>
     <SubTexture name="FINN ALT 2 DOWN0001" x="5522" y="0" width="595" height="722" frameX="0" frameY="-10" frameWidth="862" frameHeight="769"/>
-    <SubTexture name="FINN ALT 2 DOWN0002" x="6712" y="0" width="565" height="719" frameX="-30" frameY="-9" frameWidth="862" frameHeight="769"/>
     <SubTexture name="FINN ALT 2 LEFT0000" x="2283" y="759" width="642" height="691" frameX="-4" frameY="0" frameWidth="646" frameHeight="694"/>
     <SubTexture name="FINN ALT 2 LEFT0001" x="3509" y="759" width="524" height="690" frameX="-5" frameY="0" frameWidth="646" frameHeight="694"/>
-    <SubTexture name="FINN ALT 2 LEFT0002" x="3984" y="2333" width="519" height="685" frameX="-14" frameY="-6" frameWidth="527" frameHeight="691"/>
     <SubTexture name="FINN ALT 2 RIGHT0000" x="5092" y="759" width="691" height="796" frameX="0" frameY="-24" frameWidth="858" frameHeight="820"/>
     <SubTexture name="FINN ALT 2 RIGHT0001" x="6571" y="759" width="849" height="705" frameX="-9" frameY="0" frameWidth="858" frameHeight="820"/>
-    <SubTexture name="FINN ALT 2 RIGHT0002" x="0" y="1555" width="644" height="659" frameX="-44" frameY="-23" frameWidth="858" frameHeight="820"/>
     <SubTexture name="FINN ALT 2 UP0000" x="3777" y="1555" width="673" height="778" frameX="-1" frameY="0" frameWidth="685" frameHeight="778"/>
     <SubTexture name="FINN ALT 2 UP0001" x="5123" y="1555" width="682" height="716" frameX="0" frameY="-38" frameWidth="685" frameHeight="778"/>
-    <SubTexture name="FINN ALT 2 UP0002" x="7289" y="2333" width="600" height="708" frameX="-43" frameY="-41" frameWidth="622" frameHeight="726"/>
     <SubTexture name="FINN ALT IDLE0000" x="7069" y="1555" width="505" height="728" frameX="-3" frameY="-15" frameWidth="508" frameHeight="749"/>
     <SubTexture name="FINN ALT IDLE0001" x="7574" y="1555" width="507" height="740" frameX="0" frameY="-3" frameWidth="508" frameHeight="749"/>
     <SubTexture name="FINN ALT IDLE0002" x="0" y="2333" width="497" height="743" frameX="-7" frameY="0" frameWidth="508" frameHeight="749"/>
@@ -32,14 +28,10 @@
     <SubTexture name="FINN ALT IDLE0007" x="2467" y="2333" width="493" height="741" frameX="-11" frameY="-2" frameWidth="508" frameHeight="749"/>
     <SubTexture name="Finn Alt Left0000" x="2960" y="2333" width="506" height="691" frameX="0" frameY="0" frameWidth="527" frameHeight="691"/>
     <SubTexture name="Finn Alt Left0001" x="3466" y="2333" width="518" height="685" frameX="-5" frameY="-6" frameWidth="527" frameHeight="691"/>
-    <SubTexture name="Finn Alt Left0002" x="3984" y="2333" width="519" height="685" frameX="-8" frameY="-6" frameWidth="527" frameHeight="691"/>
     <SubTexture name="Finn Alt Up0000" x="6060" y="2333" width="622" height="726"/>
     <SubTexture name="Finn Alt Up0001" x="6682" y="2333" width="607" height="712" frameX="-12" frameY="-14" frameWidth="622" frameHeight="726"/>
-    <SubTexture name="Finn Alt Up0002" x="7289" y="2333" width="600" height="708" frameX="-19" frameY="-16" frameWidth="622" frameHeight="726"/>
     <SubTexture name="Finn Alt down0000" x="1800" y="3080" width="823" height="633" frameX="-34" frameY="-132" frameWidth="857" frameHeight="765"/>
     <SubTexture name="Finn Alt down0001" x="3336" y="3080" width="594" height="719" frameX="0" frameY="-9" frameWidth="857" frameHeight="765"/>
-    <SubTexture name="Finn Alt down0002" x="3930" y="3080" width="564" height="720" frameX="-30" frameY="-8" frameWidth="857" frameHeight="765"/>
     <SubTexture name="Finn alt Right0000" x="6710" y="3080" width="619" height="792" frameX="-36" frameY="-9" frameWidth="773" frameHeight="801"/>
     <SubTexture name="Finn alt Right0001" x="0" y="3872" width="681" height="658" frameX="-5" frameY="-4" frameWidth="773" frameHeight="801"/>
-    <SubTexture name="Finn alt Right0002" x="681" y="3872" width="644" height="659" frameX="-5" frameY="-3" frameWidth="773" frameHeight="801"/>
 </TextureAtlas>

@@ -2,7 +2,7 @@
         //Characters
         {Char_BF_New,    FIXED_DEC(60,1),  FIXED_DEC(100,1)},
         {NULL},
-        {Char_finnalt_New, FIXED_DEC(-120,1),  FIXED_DEC(115,1)},
+        {Char_finnalt_New, FIXED_DEC(-149,1),  FIXED_DEC(74,1)},
         {NULL},
         {NULL,     FIXED_DEC(0,1),  FIXED_DEC(-10,1)},
         
@@ -53,7 +53,7 @@
         //Characters
         {Char_BF_New, FIXED_DEC(60,1),  FIXED_DEC(100,1)},
         {NULL},
-        {Char_finn_New,  FIXED_DEC(0,1),  FIXED_DEC(-15,1)},
+        {Char_finn_New, FIXED_DEC(-120,1),  FIXED_DEC(123,1)},
         {NULL},
         {NULL},
         
