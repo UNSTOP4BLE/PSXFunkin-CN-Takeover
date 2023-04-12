@@ -11,10 +11,10 @@ static const XA_TrackDef xa_tracks[] = {
     {XA_Menu, XA_LENGTH(11300)}, //XA_GettinFreaky
     {XA_Menu, XA_LENGTH(3800)},  //XA_GameOver
     //WEEK1A.XA
-    {XA_Week1A, XA_LENGTH(60*2+40)}, //XA_Bopeebo
-    {XA_Week1A, XA_LENGTH(60*2+18)}, //XA_Fresh
+    {XA_Week1A, XA_LENGTH(16032)}, //XA_Bopeebo
+    {XA_Week1A, XA_LENGTH(13833)}, //XA_Fresh
     //WEEK1B.XA
-    {XA_Week1B, XA_LENGTH(60*2+57)}, //XA_Dadbattle
+    {XA_Week1B, XA_LENGTH(17711)}, //XA_Dadbattle
     {XA_Week1B, XA_LENGTH(60+48)}, //XA_Tutorial
 };
 
