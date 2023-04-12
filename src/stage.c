@@ -45,26 +45,12 @@ boolean noteshake;
 static u32 Sounds[7];
 
 #include "character/bf.h"
-#include "character/bfweeb.h"
-#include "character/dad.h"
-#include "character/spook.h"
-#include "character/pico.h"
-#include "character/mom.h"
-#include "character/xmasp.h"
-#include "character/monster.h"
-#include "character/senpai.h"
-#include "character/senpaim.h"
-#include "character/spirit.h"
+#include "character/finn.h"
+#include "character/finnalt.h"
 #include "character/gf.h"
-#include "character/gfweeb.h"
 
 #include "stage/dummy.h"
 #include "stage/week1.h"
-#include "stage/week2.h"
-#include "stage/week3.h"
-#include "stage/week4.h"
-#include "stage/week5.h"
-#include "stage/week6.h"
 
 static const StageDef stage_defs[StageId_Max] = {
     #include "stagedef_disc1.h"

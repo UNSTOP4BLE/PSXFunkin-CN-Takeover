@@ -1,0 +1,133 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				0,
+				271
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singUP",
+			"indices": [],
+			"name": "JAKE UP"
+		},
+		{
+			"offsets": [
+				60,
+				-52
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "JAKE Down"
+		},
+		{
+			"offsets": [
+				170,
+				23
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "Jake Left"
+		},
+		{
+			"offsets": [
+				-72,
+				25
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "Jake Right"
+		},
+		{
+			"loop": false,
+			"offsets": [
+				2,
+				306
+			],
+			"anim": "singUP-alt",
+			"fps": 24,
+			"name": "JAKE ALT UP",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				130,
+				33
+			],
+			"anim": "singDOWN-alt",
+			"fps": 24,
+			"name": "JAKE ALT Down",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-50,
+				46
+			],
+			"anim": "singRIGHT-alt",
+			"fps": 24,
+			"name": "JAKE ALT RIGHT",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				190,
+				63
+			],
+			"anim": "singLEFT-alt",
+			"fps": 24,
+			"name": "Jake alt left",
+			"indices": []
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "idle",
+			"loop": true,
+			"name": "JAKE IDLE"
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "idle-alt",
+			"loop": true,
+			"name": "JAKE ALT IDLE"
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/JAKE",
+	"position": [
+		-110,
+		310
+	],
+	"healthicon": "jake",
+	"flip_x": false,
+	"healthbar_colors": [
+		255,
+		255,
+		51
+	],
+	"camera_position": [
+		-100,
+		-80
+	],
+	"sing_duration": 6.1,
+	"scale": 1
+}

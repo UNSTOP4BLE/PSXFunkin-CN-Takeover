@@ -13,147 +13,125 @@
 //Week 1 background structure
 typedef struct
 {
-	//Stage background base structure
-	StageBack back;
-	
-	//Textures
-	Gfx_Tex tex_back0; //Stage and back
-	Gfx_Tex tex_back1; //Curtains
+    //Stage background base structure
+    StageBack back;
+    
+    //Textures
+    Gfx_Tex tex_back0; //Stage and back
+    Gfx_Tex tex_back1; //Curtains
+
+    IO_Data arc_jake, arc_jake_ptr[4];
+    Gfx_Tex tex_jake;
+    u8 jake_frame, jake_tex_id;   
+    Animatable jake_animatable;
 } Back_Week1;
+
+static const CharFrame jake_frame[] = {
+    {0, {  0,   0,  242, 137}, {151,  86}}, //0
+    {1, {  0,   0,  244, 136}, {150,  87}}, //1 
+    {2, {  0,   0,  242, 133}, {152,  87}}, //2 
+    {3, {  0,   0,  248, 135}, {151,  88}}, //3
+};
+
+static const Animation jake_anim[] = {
+    {1, (const u8[]){0, 1, 2, 3, ASCR_CHGANI, 0}},
+};
+
+//jake functions
+void Week1_jake_SetFrame(void *user, u8 frame)
+{
+    Back_Week1 *this = (Back_Week1*)user;
+    
+    //Check if this is a new frame
+    if (frame != this->jake_frame)
+    {
+        //Check if new art shall be loaded
+        const CharFrame *cframe = &jake_frame[this->jake_frame = frame];
+        if (cframe->tex != this->jake_tex_id)
+            Gfx_LoadTex(&this->tex_jake, this->arc_jake_ptr[this->jake_tex_id = cframe->tex], 0);
+    }
+}
+
+void Week1_jake_Draw(Back_Week1 *this, fixed_t x, fixed_t y, fixed_t scale)
+{
+    //Draw character
+    const CharFrame *cframe = &jake_frame[this->jake_frame];
+    
+    fixed_t ox = x - ((fixed_t)FIXED_MUL(FIXED_DEC(cframe->off[0],1), scale));
+    fixed_t oy = y - ((fixed_t)FIXED_MUL(FIXED_DEC(cframe->off[1],1), scale));
+
+    RECT src = {cframe->src[0], cframe->src[1], cframe->src[2], cframe->src[3]};
+    RECT_FIXED dst = {ox, oy, src.w << FIXED_SHIFT, src.h << FIXED_SHIFT};
+    Debug_StageMoveDebug(&dst, 5, stage.camera.x, stage.camera.y);
+    Stage_DrawTex(&this->tex_jake, &src, &dst, stage.camera.bzoom);
+}
 
 //Week 1 background functions
 void Back_Week1_DrawBG(StageBack *back)
 {
-	Back_Week1 *this = (Back_Week1*)back;
-	
-	fixed_t fx, fy;
-	
-	//Draw curtains
-	fx = (stage.camera.x * 5) >> 2;
-	fy = (stage.camera.y * 5) >> 2;
-	
-	RECT curtainl_src = {0, 0, 107, 221};
-	RECT_FIXED curtainl_dst = {
-		FIXED_DEC(-250,1) - FIXED_DEC(screen.SCREEN_WIDEOADD,2) - fx,
-		FIXED_DEC(-150,1) - fy,
-		FIXED_DEC(107,1),
-		FIXED_DEC(221,1)
-	};
-	RECT curtainr_src = {122, 0, 134, 256};
-	RECT_FIXED curtainr_dst = {
-		FIXED_DEC(110,1) + FIXED_DEC(screen.SCREEN_WIDEOADD,2) - fx,
-		FIXED_DEC(-150,1) - fy,
-		FIXED_DEC(134,1),
-		FIXED_DEC(256,1)
-	};
+    Back_Week1 *this = (Back_Week1*)back;
+    
+    fixed_t fx, fy;
+    
+    Gfx_SetClear(68, 130, 176);
 
-	if (stage.prefs.widescreen)
-	{
-		curtainl_dst.x = FIXED_DEC(-326,1) - fx;
-		curtainr_dst.x = FIXED_DEC(146,1) - fx;
-	}
-	
-	Debug_StageMoveDebug(&curtainl_dst, 4, fx, fy);
-	Debug_StageMoveDebug(&curtainr_dst, 5, fx, fy);
-	Stage_DrawTex(&this->tex_back1, &curtainl_src, &curtainl_dst, stage.camera.bzoom);
-	Stage_DrawTex(&this->tex_back1, &curtainr_src, &curtainr_dst, stage.camera.bzoom);
-	
-	//Draw stage
-	fx = stage.camera.x * 3 / 2;
-	fy = stage.camera.y * 3 / 2;
-	
-	POINT_FIXED stage_d2 = {
-		FIXED_DEC(-230,1) - fx,
-		FIXED_DEC(50,1) + FIXED_DEC(123,1) - fy,
-	};
-	POINT_FIXED stage_d3 = {
-		FIXED_DEC(-230,1) + FIXED_DEC(410,1) - fx,
-		FIXED_DEC(50,1) + FIXED_DEC(123,1) - fy,
-	};
-	
-	fx = stage.camera.x >> 1;
-	fy = stage.camera.y >> 1;
-	
-	POINT_FIXED stage_d0 = {
-		FIXED_DEC(-230,1) - fx,
-		FIXED_DEC(50,1) - fy,
-	};
-	POINT_FIXED stage_d1 = {
-		FIXED_DEC(-230,1) + FIXED_DEC(410,1) - fx,
-		FIXED_DEC(50,1) - fy,
-	};
-	
-	RECT stage_src = {0, 0, 255, 59};
-	
-	if (stage.prefs.widescreen)
-	{
-		stage_d2.x -= FIXED_DEC(120,1);
-		stage_d3.x += FIXED_DEC(120,1);
-		stage_d0.x -= FIXED_DEC(120,1);
-		stage_d1.x += FIXED_DEC(120,1);
-	}
+    //Draw bg
+    fx = stage.camera.x;
+    fy = stage.camera.y;
+    
+    Animatable_Animate(&this->jake_animatable, (void*)this, Week1_jake_SetFrame);
+    Week1_jake_Draw(this, FIXED_DEC(25,1) - fx, FIXED_DEC(-68,1) - fy, FIXED_DEC(12,10));
 
-	Stage_DrawTexArb(&this->tex_back0, &stage_src, &stage_d0, &stage_d1, &stage_d2, &stage_d3, stage.camera.bzoom);
-	
-	//Draw back
-	//fx = stage.camera.x * 2 / 3;
-	//fy = stage.camera.y * 2 / 3;
-	
-	RECT backl_src = {0, 59, 121, 105};
-	RECT_FIXED backl_dst = {
-		FIXED_DEC(-190,1) - fx,
-		FIXED_DEC(-100,1) - fy,
-		FIXED_DEC(121,1),
-		FIXED_DEC(105,1)
-	};
-	RECT backr_src = {121, 59, 136, 120};
-	RECT_FIXED backr_dst = {
-		FIXED_DEC(60,1) - fx,
-		FIXED_DEC(-110,1) - fy,
-		FIXED_DEC(136,1),
-		FIXED_DEC(120,1)
-	};
-	RECT backf_src = {0, 59, 1, 1};
-	RECT backf_dst = {
-		0,
-		0,
-		screen.SCREEN_WIDTH,
-		screen.SCREEN_HEIGHT,
-	};
-	
-	Debug_StageMoveDebug(&backl_dst, 6, fx, fy);
-	Debug_StageMoveDebug(&backr_dst, 7, fx, fy);
-	Stage_DrawTex(&this->tex_back0, &backl_src, &backl_dst, stage.camera.bzoom);
-	Stage_DrawTex(&this->tex_back0, &backr_src, &backr_dst, stage.camera.bzoom);
-	Gfx_DrawTex(&this->tex_back0, &backf_src, &backf_dst);
+    RECT bg_src = {0, 0, 256, 256};
+    RECT_FIXED bg_dst = {
+        FIXED_DEC(-450,1) - fx,
+        FIXED_DEC(-240,1) - fy,
+        FIXED_DEC(751,1),
+        FIXED_DEC(399,1)
+    };
+    Debug_StageMoveDebug(&bg_dst, 4, fx, fy);
+    Stage_DrawTex(&this->tex_back0, &bg_src, &bg_dst, stage.camera.bzoom);
 }
 
 void Back_Week1_Free(StageBack *back)
 {
-	Back_Week1 *this = (Back_Week1*)back;
-	
-	//Free structure
-	Mem_Free(this);
+    Back_Week1 *this = (Back_Week1*)back;
+    
+    //Free structure
+    Mem_Free(this);
 }
 
 StageBack *Back_Week1_New(void)
 {
-	//Allocate background structure
-	Back_Week1 *this = (Back_Week1*)Mem_Alloc(sizeof(Back_Week1));
-	if (this == NULL)
-		return NULL;
-	
-	//Set background functions
-	this->back.draw_fg = NULL;
-	this->back.draw_md = NULL;
-	this->back.draw_bg = Back_Week1_DrawBG;
-	this->back.free = Back_Week1_Free;
-	
-	//Load background textures
-	IO_Data arc_back = IO_Read("\\WEEK1\\BACK.ARC;1");
-	Gfx_LoadTex(&this->tex_back0, Archive_Find(arc_back, "back0.tim"), 0);
-	Gfx_LoadTex(&this->tex_back1, Archive_Find(arc_back, "back1.tim"), 0);
-	Mem_Free(arc_back);
-	
-	return (StageBack*)this;
+    //Allocate background structure
+    Back_Week1 *this = (Back_Week1*)Mem_Alloc(sizeof(Back_Week1));
+    if (this == NULL)
+        return NULL;
+    
+    //Set background functions
+    this->back.draw_fg = NULL;
+    this->back.draw_md = NULL;
+    this->back.draw_bg = Back_Week1_DrawBG;
+    this->back.free = Back_Week1_Free;
+    
+    //Load background textures
+    IO_Data arc_back = IO_Read("\\WEEK1\\BACK.ARC;1");
+    Gfx_LoadTex(&this->tex_back0, Archive_Find(arc_back, "back0.tim"), 0);
+    Gfx_LoadTex(&this->tex_back1, Archive_Find(arc_back, "back1.tim"), 0);
+    Mem_Free(arc_back);
+
+    //Load jake textures
+    this->arc_jake = IO_Read("\\WEEK1\\JAKE.ARC;1");
+    this->arc_jake_ptr[0] = Archive_Find(this->arc_jake, "jake0.tim");
+    this->arc_jake_ptr[1] = Archive_Find(this->arc_jake, "jake1.tim");
+    this->arc_jake_ptr[2] = Archive_Find(this->arc_jake, "jake2.tim");
+    this->arc_jake_ptr[3] = Archive_Find(this->arc_jake, "jake3.tim");
+    Gfx_SetClear(68, 130, 176);
+    
+    //Initialize jake state
+    Animatable_Init(&this->jake_animatable, jake_anim);
+    Animatable_SetAnim(&this->jake_animatable, 0);
+    this->jake_frame = this->jake_tex_id = 0xFF; //Force art load
+
+    return (StageBack*)this;
 }
