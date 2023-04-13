@@ -92,13 +92,13 @@ static const CharFrame char_finnalt_frame[] = {
 static const Animation char_finnalt_anim[CharAnim_Max] = {
     {2, (const u8[]){ 0, 1, 2, 3, 4, 5, 6, 7, ASCR_CHGANI, CharAnim_Idle}}, //CharAnim_Idle
     {2, (const u8[]){8, 9, ASCR_BACK, 0}},         //CharAnim_Left
-    {0, (const u8[]){ASCR_CHGANI, CharAnim_Idle}},   //CharAnim_LeftAlt
+    {2, (const u8[]){10, 11, ASCR_BACK, 0}},   //CharAnim_LeftAlt
     {2, (const u8[]){12, 13, ASCR_BACK, 0}},         //CharAnim_Down
-    {0, (const u8[]){ASCR_CHGANI, CharAnim_Idle}},   //CharAnim_DownAlt
+    {2, (const u8[]){14, 15, ASCR_BACK, 0}},   //CharAnim_DownAlt
     {2, (const u8[]){16, 17, ASCR_BACK, 0}},         //CharAnim_Up
-    {0, (const u8[]){ASCR_CHGANI, CharAnim_Idle}},   //CharAnim_UpAlt
+    {2, (const u8[]){18, 19, ASCR_BACK, 0}},   //CharAnim_UpAlt
     {2, (const u8[]){20, 21, ASCR_BACK, 0}},         //CharAnim_Right
-    {0, (const u8[]){ASCR_CHGANI, CharAnim_Idle}},   //CharAnim_RightAlt
+    {2, (const u8[]){22, 23, ASCR_BACK, 0}},   //CharAnim_RightAlt
 };
 
 //finnalt character functions

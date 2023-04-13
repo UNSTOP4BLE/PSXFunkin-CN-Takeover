@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="chicos asustaos.png">
+	<!-- Created with Adobe Animate version 21.0.7.42652 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="chicos asustaos0000" x="0" y="0" width="999" height="520" frameX="0" frameY="-3" frameWidth="999" frameHeight="523"/>
+	<SubTexture name="chicos asustaos0001" x="0" y="0" width="999" height="520" frameX="0" frameY="-3" frameWidth="999" frameHeight="523"/>
+	<SubTexture name="chicos asustaos0002" x="999" y="0" width="998" height="521" frameX="-1" frameY="-2" frameWidth="999" frameHeight="523"/>
+	<SubTexture name="chicos asustaos0003" x="999" y="0" width="998" height="521" frameX="-1" frameY="-2" frameWidth="999" frameHeight="523"/>
+	<SubTexture name="chicos asustaos0004" x="0" y="521" width="995" height="522" frameX="-4" frameY="-1" frameWidth="999" frameHeight="523"/>
+	<SubTexture name="chicos asustaos0005" x="0" y="521" width="995" height="522" frameX="-4" frameY="-1" frameWidth="999" frameHeight="523"/>
+	<SubTexture name="chicos asustaos0006" x="995" y="521" width="994" height="523" frameX="-5" frameY="0" frameWidth="999" frameHeight="523"/>
+	<SubTexture name="chicos asustaos0007" x="995" y="521" width="994" height="523" frameX="-5" frameY="0" frameWidth="999" frameHeight="523"/>
+	<SubTexture name="chicos asustaos0008" x="995" y="521" width="994" height="523" frameX="-5" frameY="0" frameWidth="999" frameHeight="523"/>
+	<SubTexture name="chicos asustaos0009" x="995" y="521" width="994" height="523" frameX="-5" frameY="0" frameWidth="999" frameHeight="523"/>
+	<SubTexture name="chicos asustaos0010" x="995" y="521" width="994" height="523" frameX="-5" frameY="0" frameWidth="999" frameHeight="523"/>
+	<SubTexture name="chicos asustaos0011" x="995" y="521" width="994" height="523" frameX="-5" frameY="0" frameWidth="999" frameHeight="523"/>
+	<SubTexture name="chicos asustaos0012" x="995" y="521" width="994" height="523" frameX="-5" frameY="0" frameWidth="999" frameHeight="523"/>
+</TextureAtlas>

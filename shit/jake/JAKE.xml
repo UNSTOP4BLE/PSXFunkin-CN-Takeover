@@ -4,9 +4,6 @@
     <!-- http://www.adobe.com/products/animate.html -->
     <SubTexture name="JAKE ALT Down0000" x="0" y="0" width="762" height="500" frameX="-122" frameY="0" frameWidth="904" frameHeight="537"/>
     <SubTexture name="JAKE ALT Down0001" x="1612" y="0" width="699" height="445" frameX="-82" frameY="-73" frameWidth="904" frameHeight="537"/>
-    <SubTexture name="JAKE ALT Down0002" x="3017" y="0" width="690" height="405" frameX="-72" frameY="-96" frameWidth="904" frameHeight="537"/>
-    <SubTexture name="JAKE ALT Down0003" x="4397" y="0" width="774" height="400" frameX="0" frameY="-103" frameWidth="904" frameHeight="537"/>
-    <SubTexture name="JAKE ALT Down0004" x="5860" y="0" width="685" height="467" frameX="-105" frameY="-70" frameWidth="904" frameHeight="537"/>
     <SubTexture name="JAKE ALT IDLE0000" x="7233" y="0" width="713" height="435" frameX="-1" frameY="-29" frameWidth="727" frameHeight="464"/>
     <SubTexture name="JAKE ALT IDLE0001" x="695" y="500" width="697" height="438" frameX="-18" frameY="-26" frameWidth="727" frameHeight="464"/>
     <SubTexture name="JAKE ALT IDLE0002" x="2089" y="500" width="715" height="447" frameX="-12" frameY="-17" frameWidth="727" frameHeight="464"/>
@@ -19,19 +16,10 @@
     <SubTexture name="JAKE ALT IDLE0009" x="3456" y="964" width="691" height="452" frameX="-22" frameY="-12" frameWidth="727" frameHeight="464"/>
     <SubTexture name="JAKE ALT RIGHT0000" x="4838" y="964" width="892" height="510" frameX="0" frameY="0" frameWidth="892" frameHeight="520"/>
     <SubTexture name="JAKE ALT RIGHT0001" x="6587" y="964" width="832" height="486" frameX="-27" frameY="-24" frameWidth="892" frameHeight="520"/>
-    <SubTexture name="JAKE ALT RIGHT0002" x="811" y="1474" width="809" height="485" frameX="-22" frameY="-25" frameWidth="892" frameHeight="520"/>
-    <SubTexture name="JAKE ALT RIGHT0003" x="2469" y="1474" width="803" height="485" frameX="-20" frameY="-25" frameWidth="892" frameHeight="520"/>
-    <SubTexture name="JAKE ALT RIGHT0004" x="4080" y="1474" width="800" height="485" frameX="-20" frameY="-25" frameWidth="892" frameHeight="520"/>
     <SubTexture name="JAKE ALT UP0000" x="6480" y="1474" width="763" height="803" frameX="0" frameY="0" frameWidth="790" frameHeight="803"/>
     <SubTexture name="JAKE ALT UP0001" x="0" y="2277" width="747" height="773" frameX="-7" frameY="-22" frameWidth="790" frameHeight="803"/>
-    <SubTexture name="JAKE ALT UP0002" x="1477" y="2277" width="725" height="703" frameX="-18" frameY="-75" frameWidth="790" frameHeight="803"/>
-    <SubTexture name="JAKE ALT UP0003" x="2927" y="2277" width="648" height="739" frameX="-48" frameY="-43" frameWidth="790" frameHeight="803"/>
-    <SubTexture name="JAKE ALT UP0004" x="4295" y="2277" width="780" height="730" frameX="-10" frameY="-52" frameWidth="790" frameHeight="803"/>
     <SubTexture name="JAKE Down0000" x="5795" y="2277" width="719" height="406" frameX="-73" frameY="-5" frameWidth="835" frameHeight="429"/>
     <SubTexture name="JAKE Down0001" x="7349" y="2277" width="673" height="429" frameX="-24" frameY="0" frameWidth="835" frameHeight="429"/>
-    <SubTexture name="JAKE Down0002" x="0" y="3050" width="674" height="405" frameX="-21" frameY="-10" frameWidth="835" frameHeight="429"/>
-    <SubTexture name="JAKE Down0003" x="1348" y="3050" width="673" height="400" frameX="-20" frameY="-17" frameWidth="835" frameHeight="429"/>
-    <SubTexture name="JAKE Down0004" x="2021" y="3050" width="672" height="410" frameX="-20" frameY="-7" frameWidth="835" frameHeight="429"/>
     <SubTexture name="JAKE IDLE0000" x="4047" y="3050" width="694" height="435" frameX="-19" frameY="-29" frameWidth="727" frameHeight="464"/>
     <SubTexture name="JAKE IDLE0001" x="4741" y="3050" width="697" height="439" frameX="-18" frameY="-25" frameWidth="727" frameHeight="464"/>
     <SubTexture name="JAKE IDLE0002" x="5438" y="3050" width="716" height="447" frameX="-11" frameY="-17" frameWidth="727" frameHeight="464"/>
@@ -44,22 +32,10 @@
     <SubTexture name="JAKE IDLE0009" x="1382" y="3514" width="691" height="452" frameX="-22" frameY="-12" frameWidth="727" frameHeight="464"/>
     <SubTexture name="JAKE UP0000" x="2073" y="3514" width="717" height="743" frameX="-4" frameY="0" frameWidth="724" frameHeight="743"/>
     <SubTexture name="JAKE UP0001" x="2790" y="3514" width="724" height="733" frameX="0" frameY="-10" frameWidth="724" frameHeight="743"/>
-    <SubTexture name="JAKE UP0002" x="3514" y="3514" width="719" height="735" frameX="-2" frameY="-8" frameWidth="724" frameHeight="743"/>
-    <SubTexture name="JAKE UP0003" x="4952" y="3514" width="719" height="735" frameX="-2" frameY="-8" frameWidth="724" frameHeight="743"/>
-    <SubTexture name="JAKE UP0004" x="6390" y="3514" width="719" height="735" frameX="-2" frameY="-8" frameWidth="724" frameHeight="743"/>
     <SubTexture name="Jake Left0000" x="7109" y="3514" width="735" height="486" frameX="-100" frameY="0" frameWidth="860" frameHeight="486"/>
     <SubTexture name="Jake Left0001" x="860" y="4257" width="787" height="486" frameX="0" frameY="0" frameWidth="860" frameHeight="486"/>
-    <SubTexture name="Jake Left0002" x="2435" y="4257" width="785" height="486" frameX="-4" frameY="0" frameWidth="860" frameHeight="486"/>
-    <SubTexture name="Jake Left0003" x="4004" y="4257" width="783" height="486" frameX="-5" frameY="0" frameWidth="860" frameHeight="486"/>
-    <SubTexture name="Jake Left0004" x="5570" y="4257" width="782" height="486" frameX="-5" frameY="0" frameWidth="860" frameHeight="486"/>
     <SubTexture name="Jake Right0000" x="7137" y="4257" width="823" height="489" frameX="-2" frameY="0" frameWidth="825" frameHeight="489"/>
     <SubTexture name="Jake Right0001" x="0" y="4746" width="811" height="486" frameX="-1" frameY="-3" frameWidth="825" frameHeight="489"/>
-    <SubTexture name="Jake Right0002" x="811" y="4746" width="809" height="485" frameX="0" frameY="-4" frameWidth="825" frameHeight="489"/>
-    <SubTexture name="Jake Right0003" x="2429" y="4746" width="809" height="485" frameX="0" frameY="-4" frameWidth="825" frameHeight="489"/>
-    <SubTexture name="Jake Right0004" x="3238" y="4746" width="809" height="485" frameX="0" frameY="-4" frameWidth="825" frameHeight="489"/>
     <SubTexture name="Jake alt left0000" x="5665" y="4746" width="883" height="573" frameX="-59" frameY="0" frameWidth="942" frameHeight="573"/>
     <SubTexture name="Jake alt left0001" x="0" y="5319" width="786" height="486" frameX="-1" frameY="-42" frameWidth="942" frameHeight="573"/>
-    <SubTexture name="Jake alt left0002" x="1573" y="5319" width="737" height="502" frameX="-34" frameY="-26" frameWidth="942" frameHeight="573"/>
-    <SubTexture name="Jake alt left0003" x="3093" y="5319" width="847" height="498" frameX="-2" frameY="-30" frameWidth="942" frameHeight="573"/>
-    <SubTexture name="Jake alt left0004" x="4722" y="5319" width="781" height="486" frameX="-6" frameY="-42" frameWidth="942" frameHeight="573"/>
 </TextureAtlas>

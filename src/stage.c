@@ -47,6 +47,7 @@ static u32 Sounds[7];
 #include "character/bf.h"
 #include "character/finn.h"
 #include "character/finnalt.h"
+#include "character/jake.h"
 #include "character/gf.h"
 
 #include "stage/dummy.h"
@@ -1423,6 +1424,7 @@ static void Stage_LoadState(void)
         stage.player_state[i].combo = 0;
         stage.oppo2sing = "none";
         stage.player2sing = "none";
+        stage.paused = 0;
         soundcooldown = 0;
         drawshit = 0;
         if (!stage.prefs.debug)
@@ -2085,6 +2087,10 @@ void Stage_Tick(void)
                             else
                                 opponent_anote = note_anims[note->type & 0x3][(note->type & NOTE_FLAG_ALT_ANIM) != 0];
                             note->type |= NOTE_FLAG_HIT;
+                            if (note->type & NOTE_FLAG_JAKE)
+                                stage.oppo2sing = "single";
+                            else
+                                stage.oppo2sing = "none";
                         }
                     }
                     

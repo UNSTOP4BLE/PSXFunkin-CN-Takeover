@@ -51,6 +51,8 @@
                 <!-- Background art -->
                 <file name = "back.arc" type = "data" source = "iso/week1/back.arc"/>
                 <file name = "jake.arc" type = "data" source = "iso/week1/jake.arc"/>
+                <file name = "finn.arc" type = "data" source = "iso/week1/finn.arc"/>
+                <file name = "bubble.arc" type = "data" source = "iso/week1/bubble.arc"/>
 
                 <file name = "1.1n.cht" type = "data" source = "iso/chart/quiet.json.cht"/>
                 <file name = "1.2n.cht" type = "data" source = "iso/chart/my-brother.json.cht"/>
@@ -68,6 +70,7 @@
                 <!-- Finn assets -->
                 <file name = "finn.arc" type = "data" source = "iso/finn/main.arc"/>
                 <file name = "finnalt.arc" type = "data" source = "iso/finnalt/main.arc"/>
+                <file name = "jake.arc" type = "data" source = "iso/jake/main.arc"/>
                 
                 <!-- Girlfriend assets -->
                 <file name = "gf.arc" type = "data" source = "iso/gf/main.arc"/>

@@ -18,6 +18,7 @@ all: \
 	iso/bf/weeb.arc \
 	iso/finn/main.arc \
 	iso/finnalt/main.arc \
+	iso/jake/main.arc \
 	iso/gf/main.arc \
 	iso/gf/speaker.tim \
 	iso/week1/back.arc \
@@ -44,11 +45,14 @@ iso/finn/main.arc: iso/finn/idle0.tim iso/finn/idle1.tim iso/finn/idle2.tim iso/
 
 iso/finnalt/main.arc: iso/finnalt/idle0.tim iso/finnalt/idle1.tim iso/finnalt/idle2.tim iso/finnalt/idle3.tim iso/finnalt/left0.tim iso/finnalt/left1.tim iso/finnalt/leftb0.tim iso/finnalt/leftb1.tim iso/finnalt/down0.tim iso/finnalt/down1.tim iso/finnalt/downb0.tim iso/finnalt/downb1.tim iso/finnalt/up0.tim iso/finnalt/up1.tim iso/finnalt/upb0.tim iso/finnalt/upb1.tim iso/finnalt/right0.tim iso/finnalt/right1.tim iso/finnalt/rightb0.tim iso/finnalt/rightb1.tim 
 
+# Jake 
+iso/jake/main.arc: iso/jake/idle0.tim iso/jake/idle1.tim iso/jake/idle2.tim iso/jake/idle3.tim iso/jake/idle4.tim iso/jake/left0.tim iso/jake/leftb0.tim iso/jake/down0.tim iso/jake/downb0.tim iso/jake/up0.tim iso/jake/up1.tim iso/jake/upb0.tim iso/jake/upb1.tim iso/jake/right0.tim iso/jake/rightb0.tim iso/jake/rightb1.tim 
+
 # GF
 iso/gf/main.arc: iso/gf/gf0.tim iso/gf/gf1.tim iso/gf/gf2.tim
 
 # Week 1
 iso/week1/back.arc: iso/week1/back0.tim
 iso/week1/jake.arc: iso/week1/jake0.tim iso/week1/jake1.tim iso/week1/jake2.tim iso/week1/jake3.tim
-iso/week1/finn.arc: iso/week1/jake0.tim iso/week1/jake1.tim iso/week1/jake2.tim iso/week1/jake3.tim
+iso/week1/finn.arc: iso/week1/finn.tim
 iso/week1/bubble.arc: iso/week1/jake0.tim iso/week1/jake1.tim iso/week1/jake2.tim iso/week1/jake3.tim

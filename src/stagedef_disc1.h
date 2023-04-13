@@ -19,7 +19,7 @@
         //Characters
         {Char_BF_New,    FIXED_DEC(60,1),  FIXED_DEC(100,1)},
         {NULL},
-        {Char_finn_New, FIXED_DEC(-120,1),  FIXED_DEC(100,1)},
+        {Char_jake_New, FIXED_DEC(-168,1),  FIXED_DEC(150,1)},
         {NULL},
         {NULL,     FIXED_DEC(0,1),  FIXED_DEC(-10,1)},
         
@@ -36,8 +36,8 @@
         //Characters
         {Char_BF_New,    FIXED_DEC(60,1),  FIXED_DEC(100,1)},
         {NULL},
-        {Char_finn_New, FIXED_DEC(-120,1),  FIXED_DEC(100,1)},
-        {NULL},
+        {Char_finnalt_New, FIXED_DEC(-149,1),  FIXED_DEC(74,1)},
+        {Char_jake_New, FIXED_DEC(-119,1),  FIXED_DEC(133,1)},
         {NULL,     FIXED_DEC(0,1),  FIXED_DEC(-10,1)},
         
         //Stage background

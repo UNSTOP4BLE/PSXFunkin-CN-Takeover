@@ -6,18 +6,13 @@
 			"hname"   : "Idle"
 		},
 		{
-			"fnfanim" : "idle-alt",
-			"imgname" : "idlealt",
-			"hname"   : "Idlealt"
-		},
-		{
 			"fnfanim" : "singLEFT",
 			"imgname" : "left",
 			"hname"   : "Left"
 		},
 		{
 			"fnfanim" : "singLEFT-alt",
-			"imgname" : "leftalt",
+			"imgname" : "leftb",
 			"hname"   : "Leftalt"
 		},
 		{
@@ -27,7 +22,7 @@
 		},
 		{
 			"fnfanim" : "singDOWN-alt",
-			"imgname" : "downalt",
+			"imgname" : "downb",
 			"hname"   : "Downalt"
 		},
 		{
@@ -37,7 +32,7 @@
 		},
 		{
 			"fnfanim" : "singUP-alt",
-			"imgname" : "upalt",
+			"imgname" : "upb",
 			"hname"   : "Upalt"
 		},
 		{
@@ -47,7 +42,7 @@
 		},
 		{
 			"fnfanim" : "singRIGHT-alt",
-			"imgname" : "rightalt",
+			"imgname" : "rightb",
 			"hname"   : "Rightalt"
 		}
 	],
@@ -61,10 +56,10 @@
 		768,
 		0,
 		0,
-		481
+		483
 	],
 
-	"bpp" : 4,
+	"bpp" : 8,
 	"resize": 0.25,
 	"xmlscale" : 1,
 	"padding" : 1,
