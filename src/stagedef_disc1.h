@@ -12,9 +12,9 @@
         //Song info
         1, 1,
         XA_Bopeebo, 0,
+        "AWETHEGODDESS, HAYSEED", 0xFFCCFF99,
         
-        StageId_1_2, STAGE_LOAD_FLAG,
-        "AWETHEGODDESS, HAYSEED", 0xFFCCFF99
+        StageId_1_2, STAGE_LOAD_FLAG
     },
     { //StageId_1_2 (Fresh)
         //Characters
@@ -30,9 +30,9 @@
         //Song info
         1, 2,
         XA_Fresh, 2,
+        "AWETHEGODDESS", 0xFFFF3366,
         
-        StageId_1_3, STAGE_LOAD_FLAG,
-        "AWETHEGODDESS", 0xFFFF3366
+        StageId_1_3, STAGE_LOAD_FLAG
     },
     { //StageId_1_3 (Dadbattle)
         //Characters
@@ -48,9 +48,9 @@
         //Song info
         1, 3,
         XA_Dadbattle, 0,
+        "AWETHEGODDESS", 0xFFFF3366,
         
-        StageId_1_3, 0,
-        "AWETHEGODDESS", 0xFFFF3366
+        StageId_1_3, 0
     },
     { //StageId_1_4 (Tutorial)
         //Characters
@@ -66,8 +66,8 @@
         //Song info
         1, 4,
         XA_Tutorial, 2,
+        "GIANTCADASTRAL/OOUM, HAYSEED", 0xFFFE0000,
         
-        StageId_1_4, 0, 
-        "GIANTCADASTRAL/OOUM, HAYSEED", 0xFFFE0000
+        StageId_1_4, 0
     },
    

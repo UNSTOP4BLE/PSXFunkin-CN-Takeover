@@ -123,11 +123,11 @@ typedef struct
     //Song info
     u8 week, week_song;
     u8 music_track, music_channel;
+    char credit[64];
+    u32 col;
     
     StageId next_stage;
     u8 next_load;
-    char credit[64];
-    u32 col;
 } StageDef;
 
 //Stage state

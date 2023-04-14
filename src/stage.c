@@ -937,6 +937,7 @@ void moveNote(Note *note, int *notex, int *notey)
     }
     else if (*notey < FIXED_DEC(screen.SCREEN_HEIGHT2 - 45,1))
     {
+        if (!stage.paused)
         note->move += Lerp(FIXED_DEC(note->move,1), stage.noteshakex + note_x[(note->type % 8)] - FIXED_DEC(16,1), FIXED_DEC(10,100)) / 1024;
         *notex = FIXED_DEC(note->move,1);
         *notex += (((note->type % 8) > 3) ? FIXED_DEC(-16,1) : FIXED_DEC(16,1));
