@@ -1593,9 +1593,6 @@ void Stage_Unload(void)
 
 static boolean Stage_NextLoad(void)
 {
-    CheckNewScore();
-    writeSaveFile();
-
     u8 load = stage.stage_def->next_load;
     if (load == 0)
     {
@@ -1909,6 +1906,11 @@ void Stage_Tick(void)
                     //Transition to menu or next song
                     if (stage.story && stage.stage_def->next_stage != stage.stage_id)
                     {
+                        if (stage.trans != StageTrans_Reload)
+                        {
+                            CheckNewScore();
+                            writeSaveFile();
+                        }
                         if (Stage_NextLoad())
                             goto SeamLoad;
                     }

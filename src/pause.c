@@ -30,7 +30,6 @@ void PausedState()
                 pause_select = 0;
                 break;
             case 1: //Retry
-                stage.paused = false;
                 stage.trans = StageTrans_Reload;
                 Trans_Start();
                 pause_select = 0;
