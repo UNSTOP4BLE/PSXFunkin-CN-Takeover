@@ -34,9 +34,8 @@ void Tab_draw(void)
 
     //draw text
     stage.font_cdr.draw(&stage.font_cdr, stage.songname, FIXED_DEC(tab.x + 135,1), FIXED_DEC(tab.y+1,1), FontAlign_Right);
-    u32 col = stage.stage_def[stage.stage_id].col;
-    stage.font_cdr.draw_col(&stage.font_cdr, stage.stage_def[stage.stage_id].credit, FIXED_DEC(tab.x + 155,1), FIXED_DEC(tab.y + 13,1), FontAlign_Right, ((col >> 16) & 0xFF) >> 1, ((col >> 8) & 0xFF) >> 1, ((col >> 0) & 0xFF) >> 1);
-    FntPrint("%s %d",  stage.stage_def[stage.stage_id].credit, stage.stage_id);
+    FntPrint("str 2%s2 %d, %d, %d, ", stage.credit, stage.tr, stage.tg, stage.tb );
+    stage.font_cdr.draw_col(&stage.font_cdr, stage.credit, FIXED_DEC(tab.x + 155,1), FIXED_DEC(tab.y + 13,1), FontAlign_Right, stage.tr, stage.tg, stage.tb);
     Stage_BlendTex(&stage.tex_hud0, &bar_fill, &bar_dst, stage.bump, 1);
 
 }

@@ -1289,13 +1289,19 @@ static void Stage_LoadChart(void)
         Mem_Free(stage.chart_data);
     stage.chart_data = IO_Read(chart_path);
     u8 *chart_byte = (u8*)stage.chart_data;
+    for (int i = 0; i < 64; i++)
+        stage.credit[i] = *(char*)(4 + i + chart_byte);
+   
+    stage.tr = *(u8*)(chart_byte + 64 + 4);
+    stage.tg = *(u8*)(chart_byte + 65 + 4);
+    stage.tb = *(u8*)(chart_byte + 66 + 4);
 
-        //Directly use section and notes pointers
-        stage.sections = (Section*)(chart_byte + 6);
-        stage.notes = (Note*)(chart_byte + ((u16*)stage.chart_data)[2]);
+    //Directly use section and notes pointers
+    stage.sections = (Section*)(chart_byte + 74);
+    stage.notes = (Note*)(chart_byte + ((u16*)stage.chart_data)[36]);
         
-        for (Note *note = stage.notes; note->pos != 0xFFFF; note++)
-            stage.num_notes++;
+    for (Note *note = stage.notes; note->pos != 0xFFFF; note++)
+        stage.num_notes++;
     
     //Count max scores
     stage.player_state[0].max_score = 0;

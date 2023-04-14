@@ -87,6 +87,9 @@ int main(int argc, char *argv[])
     
     double speed = song_info["speed"];
     
+    std::string _credits = song_info["credits"];
+    char credits[64];
+    strcpy(credits, _credits.c_str());
     std::cout << argv[1] << " speed: " << speed << " ini bpm: " << bpm << " step_crochet: " << step_crochet << std::endl;
     
     double milli_base = 0;
@@ -198,7 +201,18 @@ int main(int argc, char *argv[])
     
     //Write header
     WriteLong(out, (fixed_t)(speed * FIXED_UNIT));
-    WriteWord(out, 6 + (sections.size() << 2));
+    for (int i = 0; i < 64; i++)
+    {
+        out.put(credits[i]);
+    }
+    uint8_t col = song_info["r"];
+    out.put(col);
+    col = song_info["g"];
+    out.put(col);
+    col = song_info["b"];
+    out.put(col);
+    out.put(0);
+    WriteWord(out, 74 + (sections.size() << 2));
     
     //Write sections
     for (auto &i : sections)
