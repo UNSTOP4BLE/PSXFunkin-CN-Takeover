@@ -7,6 +7,7 @@
 #ifndef PSXF_GUARD_SONGTAB_H
 #define PSXF_GUARD_SONGTAB_H
 
+void Tab_Init(void);
 void Tab_draw(void);
 
 #endif

@@ -1430,6 +1430,7 @@ static void Stage_LoadState(void)
         stage.player_state[i].score = 0;
         stage.song_beat = 0;
         timer.secondtimer = 0;
+        Tab_Init();
         timer.timer = Audio_GetLength(stage.stage_def->music_track) - 1;
         timer.timermin = 0;
         strcpy(stage.player_state[i].accuracy_text, "Accuracy: ?");
