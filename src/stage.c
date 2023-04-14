@@ -24,7 +24,7 @@
 
 #include "object/combo.h"
 #include "object/splash.h"
-
+#include "songtab.h"
 //Stage constants
 //#define STAGE_NOHUD //Disable the HUD
 
@@ -122,13 +122,6 @@ static void Stage_ScrollCamera(void)
             stage.camera.x += FIXED_MUL(dx, stage.camera.td);
             stage.camera.y += FIXED_MUL(dy, stage.camera.td);
             stage.camera.zoom += FIXED_MUL(dz, stage.camera.td);
-            
-            //Shake in Week 4
-            if (stage.stage_id >= StageId_4_1 && stage.stage_id <= StageId_4_3 && !stage.paused)
-            {
-                stage.camera.x += RandomRange(FIXED_DEC(-1,10),FIXED_DEC(1,10));
-                stage.camera.y += RandomRange(FIXED_DEC(-25,100),FIXED_DEC(25,100));
-            }
         }
     }
         
@@ -1769,6 +1762,7 @@ void Stage_Tick(void)
     {
         case StageState_Play:
         { 
+            Tab_draw();
             if (stage.prefs.songtimer)
                 StageTimer_Draw();
             if (stage.prefs.debug)

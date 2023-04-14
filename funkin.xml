@@ -53,6 +53,7 @@
                 <file name = "jake.arc" type = "data" source = "iso/week1/jake.arc"/>
                 <file name = "finn.arc" type = "data" source = "iso/week1/finn.arc"/>
                 <file name = "bubble.arc" type = "data" source = "iso/week1/bubble.arc"/>
+                <file name = "guys.arc" type = "data" source = "iso/week1/guys.arc"/>
 
                 <file name = "1.1n.cht" type = "data" source = "iso/chart/quiet.json.cht"/>
                 <file name = "1.2n.cht" type = "data" source = "iso/chart/my-brother.json.cht"/>

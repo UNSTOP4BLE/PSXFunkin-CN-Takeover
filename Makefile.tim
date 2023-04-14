@@ -25,6 +25,7 @@ all: \
 	iso/week1/jake.arc \
 	iso/week1/finn.arc \
 	iso/week1/bubble.arc \
+	iso/week1/guys.arc \
 
 iso/%.tim: iso/%.png
 	tools/funkintimconv/funkintimconv $@ $<
@@ -55,4 +56,5 @@ iso/gf/main.arc: iso/gf/gf0.tim iso/gf/gf1.tim iso/gf/gf2.tim
 iso/week1/back.arc: iso/week1/back0.tim
 iso/week1/jake.arc: iso/week1/jake0.tim iso/week1/jake1.tim iso/week1/jake2.tim iso/week1/jake3.tim
 iso/week1/finn.arc: iso/week1/finn.tim
-iso/week1/bubble.arc: iso/week1/jake0.tim iso/week1/jake1.tim iso/week1/jake2.tim iso/week1/jake3.tim
+iso/week1/bubble.arc: iso/week1/bubble0.tim iso/week1/bubble1.tim
+iso/week1/guys.arc: iso/week1/guys0.tim iso/week1/guys1.tim iso/week1/guys2.tim iso/week1/guys3.tim 

@@ -8,14 +8,14 @@
 
 #include "timer.h"
 #include "stage.h"
-
+#include "main.h"
 #include <string.h>
 
 //Font_Bold
 s32 Font_Bold_GetWidth(struct FontData *this, const char *text)
 {
 	(void)this;
-	return strlen(text) * 13;
+	return strlen(text) * ((gameloop == GameLoop_Stage) ? FIXED_DEC(13,1) : 13);
 }
 
 void Font_Bold_DrawCol(struct FontData *this, const char *text, s32 x, s32 y, FontAlign align, u8 r, u8 g, u8 b)

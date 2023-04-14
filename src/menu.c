@@ -789,25 +789,10 @@ void Menu_Tick(void)
 				const char *text;
 			} menu_options[] = {
 				//{StageId_4_4, 0xFFFC96D7, "TEST"},
-				{StageId_1_4, 0xFF9271FD, "TUTORIAL"},
-				{StageId_1_1, 0xFF9271FD, "BOPEEBO"},
-				{StageId_1_2, 0xFF9271FD, "FRESH"},
-				{StageId_1_3, 0xFF9271FD, "DADBATTLE"},
-				{StageId_2_1, 0xFF223344, "SPOOKEEZ"},
-				{StageId_2_2, 0xFF223344, "SOUTH"},
-				{StageId_2_3, 0xFF223344, "MONSTER"},
-				{StageId_3_1, 0xFF941653, "PICO"},
-				{StageId_3_2, 0xFF941653, "PHILLY NICE"},
-				{StageId_3_3, 0xFF941653, "BLAMMED"},
-				{StageId_4_1, 0xFFFC96D7, "SATIN PANTIES"},
-				{StageId_4_2, 0xFFFC96D7, "HIGH"},
-				{StageId_4_3, 0xFFFC96D7, "MILF"},
-				{StageId_5_1, 0xFFA0D1FF, "COCOA"},
-				{StageId_5_2, 0xFFA0D1FF, "EGGNOG"},
-				{StageId_5_3, 0xFFA0D1FF, "WINTER HORRORLAND"},
-				{StageId_6_1, 0xFFFF78BF, "SENPAI"},
-				{StageId_6_2, 0xFFFF78BF, "ROSES"},
-				{StageId_6_3, 0xFFFF78BF, "THORNS"},
+				{StageId_1_4, 0xFF9271FD, "QUIET RETRO"},
+				{StageId_1_1, 0xFF9271FD, "QUIET"},
+				{StageId_1_2, 0xFF9271FD, "MY BROTHER"},
+				{StageId_1_3, 0xFF9271FD, "BROTHERS IN ARMS"},
 			};
 
 			menu.font_arial.draw(&menu.font_arial,
@@ -868,6 +853,7 @@ void Menu_Tick(void)
 				{
 					//play confirm sound
 					Audio_PlaySound(Sounds[1], 0x3fff);
+					strcpy(stage.songname, menu_options[menu.select].text);
 					menu.next_page = MenuPage_Stage;
 					menu.page_param.stage.id = menu_options[menu.select].stage;
 					menu.page_param.stage.story = false;

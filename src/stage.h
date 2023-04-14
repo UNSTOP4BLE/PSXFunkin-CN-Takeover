@@ -126,6 +126,8 @@ typedef struct
     
     StageId next_stage;
     u8 next_load;
+    char credit[64];
+    u32 col;
 } StageDef;
 
 //Stage state
@@ -221,6 +223,7 @@ typedef struct
     fixed_t early_safe, late_safe, early_sus_safe, late_sus_safe;
     
     //Stage state
+    char songname[64];
     boolean story;
     u8 flag;
     StageTrans trans;
