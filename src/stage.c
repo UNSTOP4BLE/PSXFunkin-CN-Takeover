@@ -1673,6 +1673,20 @@ static boolean Stage_NextLoad(void)
     }
 }
 
+int shakecount;
+void violentlyshakethefuckingscreen(void) {
+    if (shakecount <= 10)
+    {
+        shakecount += 1;
+    }
+    else
+        shakecount = 0;
+}
+
+void violentlyshakethefuckingscreenNOW(void) {
+
+}
+
 void Stage_Tick(void)
 {
     SeamLoad:;
@@ -1767,6 +1781,7 @@ void Stage_Tick(void)
     {
         case StageState_Play:
         { 
+            violentlyshakethefuckingscreen();
             Tab_draw();
             if (stage.prefs.songtimer)
                 StageTimer_Draw();
