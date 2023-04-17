@@ -82,56 +82,57 @@ typedef struct
     SkullFragment skull[COUNT_OF(char_bf_skull)];
     u8 skull_scale;
 } Char_BF;
-
+#define mogerx -100
+#define mogery -60
 //Boyfriend player definitions
 static const CharFrame char_bf_frame[] = {
-  {bf_main_bf0, {  0,  0,100, 98}, {153,154}}, //0 idle 1
-  {bf_main_bf0, {100,  0, 99, 98}, {152,154}}, //1 idle 2
-  {bf_main_bf0, {  0, 98, 96, 98}, {149,154}}, //2 idle 3
-  {bf_main_bf0, { 96, 98, 96, 98}, {148,154}}, //3 idle 4
-  {bf_main_bf1, {  0,  0, 94,100}, {146,156}}, //4 idle 5
-  {bf_main_bf1, { 94,  0,102,100}, {154,156}}, //5 idle 6
-  {bf_main_bf1, {  0,100,107,102}, {159,157}}, //6 idle 7
-  {bf_main_bf1, {107,100,105,102}, {158,157}}, //7 idle 8
-  {bf_main_bf2, {  0,  0,104,104}, {155,160}}, //8 idle 9
-  {bf_main_bf2, {104,  0,104,104}, {155,160}}, //9 idle 10
-  {bf_main_bf2, {  0,104,104,104}, {155,160}}, //10 idle 11
+  {bf_main_bf0, {  0,  0,100, 98}, {153+mogerx,154+mogery}}, //0 idle 1
+  {bf_main_bf0, {100,  0, 99, 98}, {152+mogerx,154+mogery}}, //1 idle 2
+  {bf_main_bf0, {  0, 98, 96, 98}, {149+mogerx,154+mogery}}, //2 idle 3
+  {bf_main_bf0, { 96, 98, 96, 98}, {148+mogerx,154+mogery}}, //3 idle 4
+  {bf_main_bf1, {  0,  0, 94,100}, {146+mogerx,156+mogery}}, //4 idle 5
+  {bf_main_bf1, { 94,  0,102,100}, {154+mogerx,156+mogery}}, //5 idle 6
+  {bf_main_bf1, {  0,100,107,102}, {159+mogerx,157+mogery}}, //6 idle 7
+  {bf_main_bf1, {107,100,105,102}, {158+mogerx,157+mogery}}, //7 idle 8
+  {bf_main_bf2, {  0,  0,104,104}, {155+mogerx,160+mogery}}, //8 idle 9
+  {bf_main_bf2, {104,  0,104,104}, {155+mogerx,160+mogery}}, //9 idle 10
+  {bf_main_bf2, {  0,104,104,104}, {155+mogerx,160+mogery}}, //10 idle 11
 
-  {bf_main_bf2, {104,104, 97,103}, {161,159}}, //11 left 1
-  {bf_main_bf3, {  0,  0, 95,103}, {158,159}}, //12 left 2
+  {bf_main_bf2, {104,104, 97,103}, {161+mogerx,159+mogery}}, //11 left 1
+  {bf_main_bf3, {  0,  0, 95,103}, {158+mogerx,159+mogery}}, //12 left 2
 
-  {bf_main_bf3, { 95,  0,101,109}, {162,164}}, //13 leftb 1
-  {bf_main_bf3, {  0,109,102,108}, {162,163}}, //14 leftb 2
+  {bf_main_bf3, { 95,  0,101,109}, {162+mogerx,164+mogery}}, //13 leftb 1
+  {bf_main_bf3, {  0,109,102,108}, {162+mogerx,163+mogery}}, //14 leftb 2
 
-  {bf_main_bf3, {102,109, 97,103}, {161,157}}, //15 leftm 1
-  {bf_main_bf8, {130, 104, 94,108}, {157,164}}, //16 leftm 2
+  {bf_main_bf3, {102,109, 97,103}, {161+mogerx,157+mogery}}, //15 leftm 1
+  {bf_main_bf8, {130, 104, 94,108}, {157+mogerx,164+mogery}}, //16 leftm 2
 
-  {bf_main_bf4, {104,  0, 95, 90}, {155,147}}, //17 down 1
-  {bf_main_bf4, {  0,120, 94, 91}, {155,148}}, //18 down 2
+  {bf_main_bf4, {104,  0, 95, 90}, {155+mogerx,147+mogery}}, //17 down 1
+  {bf_main_bf4, {  0,120, 94, 91}, {155+mogerx,148+mogery}}, //18 down 2
 
-  {bf_main_bf4, { 94,120, 96, 85}, {153,141}}, //19 downb 1
-  {bf_main_bf5, {  0,  0, 94, 85}, {152,141}}, //20 downb 2
+  {bf_main_bf4, { 94,120, 96, 85}, {153+mogerx,141+mogery}}, //19 downb 1
+  {bf_main_bf5, {  0,  0, 94, 85}, {152+mogerx,141+mogery}}, //20 downb 2
 
-  {bf_main_bf5, { 94,  0, 95, 91}, {157,147}}, //21 downm 1
-  {bf_main_bf8, {129,  0, 95, 99}, {157,156}}, //22 downm 2
+  {bf_main_bf5, { 94,  0, 95, 91}, {157+mogerx,147+mogery}}, //21 downm 1
+  {bf_main_bf8, {129,  0, 95, 99}, {157+mogerx,156+mogery}}, //22 downm 2
 
-  {bf_main_bf5, {119, 91, 94,112}, {147,166}}, //23 up 1
-  {bf_main_bf6, {  0,  0, 95,111}, {149,165}}, //24 up 2
+  {bf_main_bf5, {119, 91, 94,112}, {147+mogerx,166+mogery}}, //23 up 1
+  {bf_main_bf6, {  0,  0, 95,111}, {149+mogerx,165+mogery}}, //24 up 2
 
-  {bf_main_bf6, { 95,  0,101,120}, {139,177}}, //25 upb 1
-  {bf_main_bf6, {  0,120,101,120}, {140,177}}, //26 upb 2
+  {bf_main_bf6, { 95,  0,101,120}, {139+mogerx,177+mogery}}, //25 upb 1
+  {bf_main_bf6, {  0,120,101,120}, {140+mogerx,177+mogery}}, //26 upb 2
 
-  {bf_main_bf6, {101,120, 94,112}, {146,166}}, //27 upm 1
-  {bf_main_bf8, {  0,  0, 91,105}, {149,163+3}}, //28 upm 2
+  {bf_main_bf6, {101,120, 94,112}, {146+mogerx,166+mogery}}, //27 upm 1
+  {bf_main_bf8, {  0,  0, 91,105}, {149+mogerx,163+3+mogery}}, //28 upm 2
 
-  {bf_main_bf7, { 91,  0,104,102}, {148,158}}, //29 right 1
-  {bf_main_bf7, {  0,108,104,103}, {148,159}}, //30 right 2
+  {bf_main_bf7, { 91,  0,104,102}, {148+mogerx,158+mogery}}, //29 right 1
+  {bf_main_bf7, {  0,108,104,103}, {148+mogerx,159+mogery}}, //30 right 2
 
-  {bf_main_bf7, {104,108,118,103}, {153,159}}, //31 rightb 1
-  {bf_main_bf5, {  0,102,119,102}, {154,159}}, //32 rightb 2
+  {bf_main_bf7, {104,108,118,103}, {153+mogerx,159+mogery}}, //31 rightb 1
+  {bf_main_bf5, {  0,102,119,102}, {154+mogerx,159+mogery}}, //32 rightb 2
 
-  {bf_main_bf4, {  0,  0,104,102}, {148,157}}, //33 rightm 1
-  {bf_main_bf8, {  0,105,100,107}, {149,165-2}}, //34 rightm 2
+  {bf_main_bf4, {  0,  0,104,102}, {148+mogerx,157+mogery}}, //33 rightm 1
+  {bf_main_bf8, {  0,105,100,107}, {149+mogerx,165-2+mogery}}, //34 rightm 2
 
     {BF_ArcMain_Dead0, {  0,   0, 128, 128}, { 53,  98}}, //23 dead0 0
     {BF_ArcMain_Dead0, {128,   0, 128, 128}, { 53,  98}}, //24 dead0 1
@@ -168,15 +169,15 @@ static const Animation char_bf_anim[PlayerAnim_Max] = {
     {2, (const u8[]){13, 14, 15, ASCR_BACK, 1}},         //PlayerAnim_Peace
     {2, (const u8[]){16, 17, 18, 19, ASCR_REPEAT}},      //PlayerAnim_Sweat
     
-    {5, (const u8[]){28+12, 29+12, 30+12, 31+12, 31+12, 31+12, 31+12, 31+12, 31+12, 31+12, ASCR_CHGANI, PlayerAnim_Dead1}}, //PlayerAnim_Dead0
-    {5, (const u8[]){31+12, ASCR_REPEAT}},                                                       //PlayerAnim_Dead1
-    {3, (const u8[]){32+12, 33+12, 34+12, 35+12, 35+12, 35+12, 35+12, 35+12, 35+12, 35+12, ASCR_CHGANI, PlayerAnim_Dead3}}, //PlayerAnim_Dead2
-    {3, (const u8[]){35+12, ASCR_REPEAT}},                                                       //PlayerAnim_Dead3
-    {3, (const u8[]){36+12, 37+12, 35+12, 35+12, 35+12, 35+12, 35+12, ASCR_CHGANI, PlayerAnim_Dead3}},             //PlayerAnim_Dead4
-    {3, (const u8[]){38+12, 39+12, 35+12, 35+12, 35+12, 35+12, 35+12, ASCR_CHGANI, PlayerAnim_Dead3}},             //PlayerAnim_Dead5
+    {5, (const u8[]){28+7, 29+7, 30+7, 31+7, 31+7, 31+7, 31+7, 31+7, 31+7, 31+7, ASCR_CHGANI, PlayerAnim_Dead1}}, //PlayerAnim_Dead0
+    {5, (const u8[]){31+7, ASCR_REPEAT}},                                                       //PlayerAnim_Dead1
+    {3, (const u8[]){32+7, 33+7, 34+7, 35+7, 35+7, 35+7, 35+7, 35+7, 35+7, 35+7, ASCR_CHGANI, PlayerAnim_Dead3}}, //PlayerAnim_Dead2
+    {3, (const u8[]){35+7, ASCR_REPEAT}},                                                       //PlayerAnim_Dead3
+    {3, (const u8[]){36+7, 37+7, 35+7, 35+7, 35+7, 35+7, 35+7, ASCR_CHGANI, PlayerAnim_Dead3}},             //PlayerAnim_Dead4
+    {3, (const u8[]){38+7, 39+7, 35+7, 35+7, 35+7, 35+7, 35+7, ASCR_CHGANI, PlayerAnim_Dead3}},             //PlayerAnim_Dead5
     
-    {10, (const u8[]){35+12, 35+12, 35+12, ASCR_BACK, 1}}, //PlayerAnim_Dead4
-    { 3, (const u8[]){38+12, 39+12, 35+12, ASCR_REPEAT}},  //PlayerAnim_Dead5
+    {10, (const u8[]){35+7, 35+7, 35+7, ASCR_BACK, 1}}, //PlayerAnim_Dead4
+    { 3, (const u8[]){38+7, 39+7, 35+7, ASCR_REPEAT}},  //PlayerAnim_Dead5
 };
 
 //Boyfriend player functions

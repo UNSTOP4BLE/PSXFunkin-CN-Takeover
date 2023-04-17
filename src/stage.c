@@ -42,6 +42,7 @@ static const u8 note_anims[4][3] = {
 
 //Stage definitions
 boolean noteshake;
+boolean usedbotplay;
 static u32 Sounds[7];
 
 #include "character/bf.h"
@@ -369,7 +370,7 @@ static void Stage_SustainCheck(PlayerState *this, u8 type)
 
 static void CheckNewScore()
 {
-    if (stage.mode == StageMode_Normal && !stage.prefs.botplay && timer.timermin == 0 && timer.timer <= 5)
+    if (stage.mode == StageMode_Normal && !stage.prefs.botplay && timer.timermin == 0 && timer.timer <= 5 && !usedbotplay)
     {
         if (stage.player_state[0].score >= stage.prefs.savescore[stage.stage_id][stage.stage_diff])
             stage.prefs.savescore[stage.stage_id][stage.stage_diff] = stage.player_state[0].score;          
@@ -1434,6 +1435,7 @@ static void Stage_LoadState(void)
         stage.oppo2sing = "none";
         stage.player2sing = "none";
         stage.paused = 0;
+        usedbotplay = 0;
         soundcooldown = 0;
         drawshit = 0;
         if (!stage.prefs.debug)
@@ -1832,7 +1834,9 @@ void Stage_Tick(void)
                 stage.noteshakex = 0;
                 stage.noteshakey = 0;
             }
-
+            //anti cheat
+            if (stage.botplay == true)
+                usedbotplay = true;
             //Clear per-frame flags
             stage.flag &= ~(STAGE_FLAG_JUST_STEP | STAGE_FLAG_SCORE_REFRESH);
             
