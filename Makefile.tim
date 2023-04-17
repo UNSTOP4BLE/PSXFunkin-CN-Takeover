@@ -15,7 +15,6 @@ all: \
 	iso/stage/hud0weeb.tim \
 	iso/bf/main.arc \
 	iso/bf/dead.arc \
-	iso/bf/weeb.arc \
 	iso/finn/main.arc \
 	iso/finnalt/main.arc \
 	iso/jake/main.arc \
@@ -39,7 +38,6 @@ iso/menu/menu.arc: iso/menu/back.tim iso/menu/ng.tim iso/menu/story.tim iso/menu
 # BF
 iso/bf/main.arc: iso/bf/bf0.tim iso/bf/bf1.tim iso/bf/bf2.tim iso/bf/bf3.tim iso/bf/bf4.tim iso/bf/bf5.tim iso/bf/bf6.tim iso/bf/bf7.tim iso/bf/bf8.tim iso/bf/dead0.tim
 iso/bf/dead.arc: iso/bf/dead1.tim iso/bf/dead2.tim iso/bf/retry.tim
-iso/bf/weeb.arc: iso/bf/weeb0.tim iso/bf/weeb1.tim
 
 # Finn
 iso/finn/main.arc: iso/finn/idle0.tim iso/finn/idle1.tim iso/finn/idle2.tim iso/finn/idle3.tim iso/finn/idle4.tim iso/finn/idle5.tim iso/finn/idle6.tim iso/finn/idle7.tim iso/finn/idle8.tim iso/finn/idle9.tim iso/finn/idle10.tim iso/finn/idle11.tim iso/finn/idle12.tim iso/finn/idle13.tim iso/finn/idle14.tim iso/finn/idle15.tim iso/finn/left0.tim iso/finn/left1.tim iso/finn/left2.tim iso/finn/left3.tim iso/finn/left4.tim iso/finn/left5.tim iso/finn/left6.tim iso/finn/left7.tim iso/finn/down0.tim iso/finn/down1.tim iso/finn/down2.tim iso/finn/down3.tim iso/finn/up0.tim iso/finn/up1.tim iso/finn/up2.tim iso/finn/up3.tim iso/finn/up4.tim iso/finn/up5.tim iso/finn/up6.tim iso/finn/up7.tim iso/finn/up8.tim iso/finn/right0.tim iso/finn/right1.tim iso/finn/right2.tim iso/finn/right3.tim
