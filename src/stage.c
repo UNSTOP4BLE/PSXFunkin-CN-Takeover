@@ -1835,7 +1835,7 @@ void Stage_Tick(void)
                 stage.noteshakey = 0;
             }
             //anti cheat
-            if (stage.botplay == true)
+            if (stage.prefs.botplay == true)
                 usedbotplay = true;
             //Clear per-frame flags
             stage.flag &= ~(STAGE_FLAG_JUST_STEP | STAGE_FLAG_SCORE_REFRESH);

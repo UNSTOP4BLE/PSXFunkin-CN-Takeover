@@ -43,6 +43,7 @@ struct Note
 #define EVENTS_FLAG_SPEED     (1 << 2) //Change Scroll Speed
 #define EVENTS_FLAG_GF        (1 << 3) //Set GF Speed
 #define EVENTS_FLAG_CAMZOOM   (1 << 4) //Add Camera Zoom
+#define EVENTS_FLAG_SHAKE   (1 << 5) //Add shake
 
 #define EVENTS_FLAG_PLAYED     (1 << 15) //Event has been already played
 
@@ -53,6 +54,8 @@ struct Event
     uint16_t event;
     uint16_t value1;
     uint16_t value2;
+    uint16_t value3;
+    uint16_t value4;
 };
 
 typedef int32_t fixed_t;
@@ -74,6 +77,9 @@ void Events_Read(json& i, Event& event_src, std::vector<Event>& event_target, ui
 
     if (i[0 + position] == "Add Camera Zoom")
         event_src.event |= EVENTS_FLAG_CAMZOOM;
+
+    if (i[0 + position] == "Screen Shake")
+        event_src.event |= EVENTS_FLAG_SHAKE;
     
     if (event_src.event & EVENTS_FLAG_VARIANT)
     {
@@ -106,13 +112,47 @@ void Events_Read(json& i, Event& event_src, std::vector<Event>& event_target, ui
                 i[2 + position] = "0.03"; //hud zoom
         }
 
-        //Get values information
-        std::string value1 =  i[1 + position];
-        std::string value2 =  i[2 + position];
+        if (event_src.event & EVENTS_FLAG_SHAKE)
+        {
+            //Default values
+            if (i[1 + position] == "")
+                i[1 + position] = "1";
 
+            if (i[2 + position] == "")
+                i[2 + position] = "0";
+        }
+        //Get values information
+        std::string values[4];
+        char valchar[4][64];
+        int newindex = 0;
+        for (int ind = 0; ind < 4; ind ++)
+        {
+            if (event_src.event & EVENTS_FLAG_SHAKE && ind <= 2)
+            {
+                for (int j = 0; j < 64; j++)
+                {
+                    char ogvalchar[64] = i[ind+1 + position];
+
+                    if (i[ind+1 + position][j] != ',')
+                        valchar[ind + newindex][j] = i[ind+1 + position][j];
+                    else
+                    {
+                        j += 2; //skip a space and ,
+                        for (int h = 0; h < 64; h++)
+                            valchar[ind + newindex+1][h] =i[ind+1 + position][j+h];
+                        
+                        newindex += 1;
+                        break;
+                    }
+                }
+            }
+            values[ind] = valchar[ind];
+        }
         //fixed values by 1024
-        event_src.value1 = std::stof(value1) * FIXED_UNIT;
-        event_src.value2 = std::stof(value2) * FIXED_UNIT;
+        event_src.value1 = std::stof(values[0]) * FIXED_UNIT;
+        event_src.value2 = std::stof(values[1]) * FIXED_UNIT;
+        event_src.value3 = std::stof(values[2]) * FIXED_UNIT;
+        event_src.value4 = std::stof(values[3]) * FIXED_UNIT;
         std::cout << "Found event!: " << i[0 + position] << '\n';
 
         event_target.push_back(event_src);
