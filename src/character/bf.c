@@ -39,13 +39,15 @@ static SkullFragment char_bf_skull[15] = {
 //Boyfriend player types
 enum
 {
-	BF_ArcMain_BF0,
-	BF_ArcMain_BF1,
-	BF_ArcMain_BF2,
-	BF_ArcMain_BF3,
-	BF_ArcMain_BF4,
-	BF_ArcMain_BF5,
-	BF_ArcMain_BF6,
+  bf_main_bf0,
+  bf_main_bf1,
+  bf_main_bf2,
+  bf_main_bf3,
+  bf_main_bf4,
+  bf_main_bf5,
+  bf_main_bf6,
+  bf_main_bf7,
+  bf_main_bf8,
 	BF_ArcMain_Dead0, //BREAK
 	
 	BF_ArcMain_Max,
@@ -83,71 +85,65 @@ typedef struct
 
 //Boyfriend player definitions
 static const CharFrame char_bf_frame[] = {
-	{BF_ArcMain_BF0, {  0,   0, 102,  99}, { 53,  92}}, //0 idle 1
-	{BF_ArcMain_BF0, {103,   0, 102,  99}, { 53,  92}}, //1 idle 2
-	{BF_ArcMain_BF0, {  0, 100, 102, 101}, { 53,  94}}, //2 idle 3
-	{BF_ArcMain_BF0, {103, 100, 103, 104}, { 53,  97}}, //3 idle 4
-	{BF_ArcMain_BF1, {  0,   0, 103, 104}, { 53,  97}}, //4 idle 5
-	
-	{BF_ArcMain_BF1, {104,   0,  96, 102}, { 56,  95}}, //5 left 1
-	{BF_ArcMain_BF1, {  0, 105,  94, 102}, { 54,  95}}, //6 left 2
-	
-	{BF_ArcMain_BF1, { 95, 103,  94,  89}, { 52,  82}}, //7 down 1
-	{BF_ArcMain_BF2, {  0,   0,  94,  90}, { 52,  83}}, //8 down 2
-	
-	{BF_ArcMain_BF2, { 95,   0,  93, 112}, { 41, 104}}, //9 up 1
-	{BF_ArcMain_BF2, {  0,  91,  94, 111}, { 42, 103}}, //10 up 2
-	
-	{BF_ArcMain_BF2, { 95, 113, 102, 102}, { 41,  95}}, //11 right 1
-	{BF_ArcMain_BF3, {  0,   0, 102, 102}, { 41,  95}}, //12 right 2
-	
-	{BF_ArcMain_BF3, {103,   0,  99, 105}, { 54,  98}}, //13 peace 1
-	{BF_ArcMain_BF3, {  0, 103, 104, 103}, { 54,  96}}, //14 peace 2
-	{BF_ArcMain_BF3, {105, 106, 104, 104}, { 54,  97}}, //15 peace 3
-	
-	{BF_ArcMain_BF4, {  0,   0, 128, 128}, { 53,  92}}, //16 sweat 1
-	{BF_ArcMain_BF4, {128,   0, 128, 128}, { 53,  93}}, //17 sweat 2
-	{BF_ArcMain_BF4, {  0, 128, 128, 128}, { 53,  98}}, //18 sweat 3
-	{BF_ArcMain_BF4, {128, 128, 128, 128}, { 53,  98}}, //19 sweat 4
-	
-	{BF_ArcMain_BF5, {  0,   0,  93, 108}, { 52, 101}}, //20 left miss 1
-	{BF_ArcMain_BF5, { 94,   0,  93, 108}, { 52, 101}}, //21 left miss 2
-	
-	{BF_ArcMain_BF5, {  0, 109,  95,  98}, { 50,  90}}, //22 down miss 1
-	{BF_ArcMain_BF5, { 96, 109,  95,  97}, { 50,  89}}, //23 down miss 2
-	
-	{BF_ArcMain_BF6, {  0,   0,  90, 107}, { 44,  99}}, //24 up miss 1
-	{BF_ArcMain_BF6, { 91,   0,  89, 108}, { 44, 100}}, //25 up miss 2
-	
-	{BF_ArcMain_BF6, {  0, 108,  99, 108}, { 42, 101}}, //26 right miss 1
-	{BF_ArcMain_BF6, {100, 109, 101, 108}, { 43, 101}}, //27 right miss 2
+  {bf_main_bf0, {  0,  0,100, 98}, {153,154}}, //0 idle 1
+  {bf_main_bf0, {100,  0, 99, 98}, {152,154}}, //1 idle 2
+  {bf_main_bf0, {  0, 98, 96, 98}, {149,154}}, //2 idle 3
+  {bf_main_bf0, { 96, 98, 96, 98}, {148,154}}, //3 idle 4
+  {bf_main_bf1, {  0,  0, 94,100}, {146,156}}, //4 idle 5
+  {bf_main_bf1, { 94,  0,102,100}, {154,156}}, //5 idle 6
+  {bf_main_bf1, {  0,100,107,102}, {159,157}}, //6 idle 7
+  {bf_main_bf1, {107,100,105,102}, {158,157}}, //7 idle 8
+  {bf_main_bf2, {  0,  0,104,104}, {155,160}}, //8 idle 9
+  {bf_main_bf2, {104,  0,104,104}, {155,160}}, //9 idle 10
+  {bf_main_bf2, {  0,104,104,104}, {155,160}}, //10 idle 11
 
-	{BF_ArcMain_Dead0, {  0,   0, 128, 128}, { 53,  98}}, //23 dead0 0
-	{BF_ArcMain_Dead0, {128,   0, 128, 128}, { 53,  98}}, //24 dead0 1
-	{BF_ArcMain_Dead0, {  0, 128, 128, 128}, { 53,  98}}, //25 dead0 2
-	{BF_ArcMain_Dead0, {128, 128, 128, 128}, { 53,  98}}, //26 dead0 3
-	
-	{BF_ArcDead_Dead1, {  0,   0, 128, 128}, { 53,  98}}, //27 dead1 0
-	{BF_ArcDead_Dead1, {128,   0, 128, 128}, { 53,  98}}, //28 dead1 1
-	{BF_ArcDead_Dead1, {  0, 128, 128, 128}, { 53,  98}}, //29 dead1 2
-	{BF_ArcDead_Dead1, {128, 128, 128, 128}, { 53,  98}}, //30 dead1 3
-	
-	{BF_ArcDead_Dead2, {  0,   0, 128, 128}, { 53,  98}}, //31 dead2 body twitch 0
-	{BF_ArcDead_Dead2, {128,   0, 128, 128}, { 53,  98}}, //32 dead2 body twitch 1
-	{BF_ArcDead_Dead2, {  0, 128, 128, 128}, { 53,  98}}, //33 dead2 balls twitch 0
-	{BF_ArcDead_Dead2, {128, 128, 128, 128}, { 53,  98}}, //34 dead2 balls twitch 1
+  {bf_main_bf2, {104,104, 97,103}, {161,159}}, //11 left 1
+  {bf_main_bf3, {  0,  0, 95,103}, {158,159}}, //12 left 2
+
+  {bf_main_bf3, { 95,  0,101,109}, {162,164}}, //13 leftb 1
+  {bf_main_bf3, {  0,109,102,108}, {162,163}}, //14 leftb 2
+
+  {bf_main_bf3, {102,109, 97,103}, {161,157}}, //15 leftm 1
+  {bf_main_bf4, {  0,  0, 94,120}, {157,164}}, //16 leftm 2
+
+  {bf_main_bf4, { 94,  0, 95, 90}, {155,147}}, //17 down 1
+  {bf_main_bf4, {  0,120, 94, 91}, {155,148}}, //18 down 2
+
+  {bf_main_bf4, { 94,120, 96, 85}, {153,141}}, //19 downb 1
+  {bf_main_bf5, {  0,  0, 94, 85}, {152,141}}, //20 downb 2
+
+  {bf_main_bf5, { 94,  0, 95, 91}, {157,147}}, //21 downm 1
+  {bf_main_bf5, {  0, 91, 95, 99}, {157,156}}, //22 downm 2
+
+  {bf_main_bf5, { 95, 91, 94,112}, {147,166}}, //23 up 1
+  {bf_main_bf6, {  0,  0, 95,111}, {149,165}}, //24 up 2
+
+  {bf_main_bf6, { 95,  0,101,120}, {139,177}}, //25 upb 1
+  {bf_main_bf6, {  0,120,101,120}, {140,177}}, //26 upb 2
+
+  {bf_main_bf6, {101,120, 94,112}, {146,166}}, //27 upm 1
+  {bf_main_bf7, {  0,  0, 91,108}, {149,163}}, //28 upm 2
+
+  {bf_main_bf7, { 91,  0,104,102}, {148,158}}, //29 right 1
+  {bf_main_bf7, {  0,108,104,103}, {148,159}}, //30 right 2
+
+  {bf_main_bf7, {104,108,118,103}, {153,159}}, //31 rightb 1
+  {bf_main_bf8, {  0,  0,119,102}, {154,159}}, //32 rightb 2
+
+  {bf_main_bf8, {119,  0,104,102}, {148,157}}, //33 rightm 1
+  {bf_main_bf8, {  0,102,100,109}, {149,165}}, //34 rightm 2
 };
 
 static const Animation char_bf_anim[PlayerAnim_Max] = {
-	{2, (const u8[]){ 0,  1,  2,  3,  4, ASCR_BACK, 1}}, //CharAnim_Idle
-	{2, (const u8[]){ 5,  6, ASCR_BACK, 1}},             //CharAnim_Left
-	{0, (const u8[]){ASCR_CHGANI, CharAnim_Idle}},       //CharAnim_LeftAlt
-	{2, (const u8[]){ 7,  8, ASCR_BACK, 1}},             //CharAnim_Down
-	{0, (const u8[]){ASCR_CHGANI, CharAnim_Idle}},       //CharAnim_DownAlt
-	{2, (const u8[]){ 9, 10, ASCR_BACK, 1}},             //CharAnim_Up
-	{0, (const u8[]){ASCR_CHGANI, CharAnim_Idle}},       //CharAnim_UpAlt
-	{2, (const u8[]){11, 12, ASCR_BACK, 1}},             //CharAnim_Right
-	{0, (const u8[]){ASCR_CHGANI, CharAnim_Idle}},       //CharAnim_RightAlt
+	{2, (const u8[]){ 0,  1,  2,  3,  4,  5,  6, 7, 8, 9, 10, ASCR_BACK, 0}}, //CharAnim_Idle
+	{2, (const u8[]){ 11,  12, ASCR_BACK, 0}},             //CharAnim_Left
+	{2, (const u8[]){ 13, 14, ASCR_BACK, 0}},       //CharAnim_LeftAlt
+	{2, (const u8[]){ 17,  18, ASCR_BACK, 0}},             //CharAnim_Down
+	{2, (const u8[]){ 19,  20, ASCR_BACK, 0}},       //CharAnim_DownAlt
+	{2, (const u8[]){ 23, 24, ASCR_BACK, 0}},             //CharAnim_Up
+	{2, (const u8[]){ 25, 26, ASCR_BACK, 0}},       //CharAnim_UpAlt
+	{2, (const u8[]){ 29, 30, ASCR_BACK, 0}},             //CharAnim_Right
+	{2, (const u8[]){ 31, 32, ASCR_BACK, 0}},       //CharAnim_RightAlt
 	
 	{1, (const u8[]){ 5, 20, 20, 21, ASCR_BACK, 1}},     //PlayerAnim_LeftMiss
 	{1, (const u8[]){ 7, 22, 22, 23, ASCR_BACK, 1}},     //PlayerAnim_DownMiss
@@ -468,6 +464,8 @@ Character *Char_BF_New(fixed_t x, fixed_t y)
 			"bf4.tim",   //BF_ArcMain_BF4
 			"bf5.tim",   //BF_ArcMain_BF5
 			"bf6.tim",   //BF_ArcMain_BF6
+			"bf7.tim",   //BF_ArcMain_BF7
+			"bf8.tim",   //BF_ArcMain_BF8
 			"dead0.tim", //BF_ArcMain_Dead0
 			NULL
 		};

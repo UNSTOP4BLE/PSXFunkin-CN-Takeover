@@ -1,0 +1,83 @@
+{
+	"animations": [
+		{
+			"fnfanim" : "idle",
+			"imgname" : "idle",
+			"hname"   : "Idle"
+		},
+		{
+			"fnfanim" : "singLEFT",
+			"imgname" : "left",
+			"hname"   : "Left"
+		},
+		{
+			"fnfanim" : "singLEFT-alt",
+			"imgname" : "leftb",
+			"hname"   : "Leftalt"
+		},
+		{
+			"fnfanim" : "singLEFTmiss",
+			"imgname" : "leftm",
+			"hname"   : "leftmiss"
+		},
+		{
+			"fnfanim" : "singDOWN",
+			"imgname" : "down",
+			"hname"   : "Down"
+		},
+		{
+			"fnfanim" : "singDOWN-alt",
+			"imgname" : "downb",
+			"hname"   : "Downalt"
+		},
+		{
+			"fnfanim" : "singDOWNmiss",
+			"imgname" : "downm",
+			"hname"   : "downmiss"
+		},
+		{
+			"fnfanim" : "singUP",
+			"imgname" : "up",
+			"hname"   : "Up"
+		},
+		{
+			"fnfanim" : "singUP-alt",
+			"imgname" : "upb",
+			"hname"   : "Upalt"
+		},
+		{
+			"fnfanim" : "singUPmiss",
+			"imgname" : "upm",
+			"hname"   : "Upmiss"
+		},
+		{
+			"fnfanim" : "singRIGHT",
+			"imgname" : "right",
+			"hname"   : "Right"
+		},
+		{
+			"fnfanim" : "singRIGHT-alt",
+			"imgname" : "rightb",
+			"hname"   : "Rightalt"
+		},
+		{
+			"fnfanim" : "singRIGHTmiss",
+			"imgname" : "rightm",
+			"hname"   : "Rightmiss"
+		}
+	],
+	"input":  "bf",
+	"outdir": "../../iso/bf/",
+	"charname" : "bf",
+	"optimize" : true,
+	"optimizename" : "bf",
+	"arcname" : "main",
+	"vrampos" : [576, 0, 0, 480],
+
+	"bpp" : 4,
+	"resize": 0.25,
+	"xmlscale" : 1,
+	"padding" : 1,
+	"max_width" : 256,
+	"max_height" : 256
+}

@@ -14,7 +14,7 @@ typedef struct
 {
     fixed_t x, y;
     fixed_t iconzoom;
-    fixed_t bump;
+    fixed_t iconscale;
 } Tab;
 
 Tab tab;
@@ -50,18 +50,25 @@ void Tab_Init(void)
     if (stage.prefs.widescreen)
         tab.x = -220;
     tab.y = -90;
-    tab.iconzoom = FIXED_UNIT;
+    tab.iconzoom = tab.iconscale = FIXED_DEC(10,1);
 }
 
 void Tab_draw(void)
 {
-    fixed_t lastzoom;
-
     RECT icon = geticon((stage.mode == StageMode_Swap ? stage.player_state[0].character->health_i : stage.player_state[1].character->health_i));
-    RECT_FIXED icon_dst = {FIXED_DEC(tab.x,1), FIXED_DEC(tab.y,1), FIXED_DEC(46,1), FIXED_DEC(46,1)};
-    tab.iconzoom += tab.bump - (lastzoom - tab.iconzoom)
-    tab.iconzoom += Lerp(tab.iconzoom, FIXED_DEC(timer_dt,1), FIXED_DEC(10,100));
-    bump(&bump);
+    RECT_FIXED icon_dst = {FIXED_DEC(tab.x,1), FIXED_DEC(tab.y - 13,1), FIXED_DEC(46,1), FIXED_DEC(46,1)};
+  	
+  	if (stage.song_step < 0)
+  	{
+	    tab.iconzoom += Lerp(tab.iconzoom, FIXED_DEC(1,1), FIXED_DEC(10,100));
+	    tab.iconscale += Lerp(tab.iconscale, FIXED_DEC(1,1), FIXED_DEC(10,100));
+  		icon_dst.x -= tab.iconscale;
+  		icon_dst.y -= tab.iconscale;
+  		icon_dst.w = FIXED_MUL(icon_dst.w, tab.iconscale);
+  		icon_dst.h = FIXED_MUL(icon_dst.h, tab.iconscale);
+  	}
+   	else
+ 	   bump(&tab.iconzoom);
     RECT bar_fill = {252, 252, 1, 1};
     if (stage.song_step >= 20 && !stage.paused)
         tab.x += Lerp(FIXED_DEC(tab.x, 1), FIXED_DEC(-screen.SCREEN_WIDTH + -40,1), FIXED_DEC(6,100)) / 1024;
@@ -69,10 +76,12 @@ void Tab_draw(void)
 
     //draw text
     stage.font_cdr.draw(&stage.font_cdr, stage.songname, FIXED_DEC(tab.x + 135,1), FIXED_DEC(tab.y+1,1), FontAlign_Right);
-    Stage_DrawTex(&stage.tex_hud1, &icon, &icon_dst, tab.iconzoom);
     stage.font_cdr.draw_col(&stage.font_cdr, stage.credit, FIXED_DEC(tab.x + 155,1), FIXED_DEC(tab.y + 13,1), FontAlign_Right, stage.tr, stage.tg, stage.tb);
-    Stage_BlendTex(&stage.tex_hud0, &bar_fill, &bar_dst, stage.bump, 1);
 
-    lastzoom = tab.iconzoom;
+    //draw icon
+    Stage_DrawTex(&stage.tex_hud1, &icon, &icon_dst, tab.iconzoom);
+
+    //draw bar
+    Stage_BlendTex(&stage.tex_hud0, &bar_fill, &bar_dst, stage.bump, 1);
 
 }
