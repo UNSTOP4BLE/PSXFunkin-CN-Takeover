@@ -14,48 +14,46 @@
 //finn character structure
 enum
 {
-    finn_main_Idle0,
-    finn_main_Idle1,
-    finn_main_Idle2,
-    finn_main_Idle3,
-    finn_main_Idle4,
-    finn_main_Idle5,
-    finn_main_Idle6,
-    finn_main_Idle7,
-    finn_main_Idle8,
-    finn_main_Idle9,
-    finn_main_Idle10,
-    finn_main_Idle11,
-    finn_main_Idle12,
-    finn_main_Idle13,
-    finn_main_Idle14,
-    finn_main_Idle15,
-    finn_main_Left0,
-    finn_main_Left1,
-    finn_main_Left2,
-    finn_main_Left3,
-    finn_main_Left4,
-    finn_main_Left5,
-    finn_main_Left6,
-    finn_main_Left7,
-    finn_main_Down0,
-    finn_main_Down1,
-    finn_main_Down2,
-    finn_main_Down3,
-    finn_main_Up0,
-    finn_main_Up1,
-    finn_main_Up2,
-    finn_main_Up3,
-    finn_main_Up4,
-    finn_main_Up5,
-    finn_main_Up6,
-    finn_main_Up7,
-    finn_main_Up8,
-    finn_main_Right0,
-    finn_main_Right1,
-    finn_main_Right2,
-    finn_main_Right3,
-    
+
+  finn_main_Idle0,
+  finn_main_Idle1,
+  finn_main_Idle2,
+  finn_main_Idle3,
+  finn_main_Idle4,
+  finn_main_Idle5,
+  finn_main_Idle6,
+  finn_main_Idle7,
+  finn_main_Idle8,
+  finn_main_Idle9,
+  finn_main_Idle10,
+  finn_main_Idle11,
+  finn_main_Idle12,
+  finn_main_Idle13,
+  finn_main_Idle14,
+  finn_main_Idle15,
+  finn_main_Left0,
+  finn_main_Left1,
+  finn_main_Left2,
+  finn_main_Left3,
+  finn_main_Left4,
+  finn_main_Left5,
+  finn_main_Left6,
+  finn_main_Left7,
+  finn_main_Down0,
+  finn_main_Down1,
+  finn_main_Down2,
+  finn_main_Up0,
+  finn_main_Up1,
+  finn_main_Up2,
+  finn_main_Up3,
+  finn_main_Up4,
+  finn_main_Up5,
+  finn_main_Up6,
+  finn_main_Right0,
+  finn_main_Right1,
+  finn_main_Right2,
+  finn_main_Right3,
+
     finn_Arc_Max,
 };
 
@@ -112,26 +110,22 @@ static const CharFrame char_finn_frame[] = {
   {finn_main_Down2, {  0,  0,128,125}, {158,134}}, //33 down 5
   {finn_main_Down2, {128,  0,127,125}, {158,134}}, //34 down 6
   {finn_main_Down2, {  0,125,128,125}, {158,134}}, //35 down 7
-  {finn_main_Down3, {  0,  0,128,131}, {158,139}}, //36 down 8
 
-  {finn_main_Up0, {  0,  0,231,145}, {173,154}}, //37 up 1
-  {finn_main_Up1, {  0,  0,232,145}, {172,154}}, //38 up 2
-  {finn_main_Up2, {  0,  0,239,171}, {175,179}}, //39 up 3
-  {finn_main_Up3, {  0,  0,241,166}, {175,175}}, //40 up 4
-  {finn_main_Up4, {  0,  0,241,166}, {175,175}}, //41 up 5
-  {finn_main_Up5, {  0,  0,240,166}, {176,175}}, //42 up 6
-  {finn_main_Up6, {  0,  0,241,167}, {175,175}}, //43 up 7
-  {finn_main_Up7, {  0,  0,240,167}, {175,175}}, //44 up 8
-  {finn_main_Up8, {  0,  0,241,167}, {175,175}}, //45 up 9
+  {finn_main_Up0, {  0,  0,231,145}, {173,154}}, //36 up 1
+  {finn_main_Up1, {  0,  0,232,145}, {172,154}}, //37 up 2
+  {finn_main_Up2, {  0,  0,239,171}, {175,179}}, //38 up 3
+  {finn_main_Up3, {  0,  0,241,166}, {175,175}}, //39 up 4
+  {finn_main_Up4, {  0,  0,241,166}, {175,175}}, //40 up 5
+  {finn_main_Up5, {  0,  0,241,167}, {175,175}}, //41 up 6
+  {finn_main_Up6, {  0,  0,240,167}, {175,175}}, //42 up 7
 
-  {finn_main_Right0, {  0,  0,178,123}, {164,133}}, //46 right 1
-  {finn_main_Right0, {  0,123,179,125}, {164,135}}, //47 right 2
-  {finn_main_Right1, {  0,  0,173,117}, {161,126}}, //48 right 3
-  {finn_main_Right1, {  0,117,173,118}, {162,128}}, //49 right 4
-  {finn_main_Right2, {  0,  0,172,121}, {162,131}}, //50 right 5
-  {finn_main_Right2, {  0,121,172,118}, {162,128}}, //51 right 6
-  {finn_main_Right3, {  0,  0,172,118}, {162,128}}, //52 right 7
-  {finn_main_Right3, {  0,118,172,118}, {162,128}}, //53 right 8
+  {finn_main_Right0, {  0,  0,178,123}, {164,133}}, //43 right 1
+  {finn_main_Right0, {  0,123,179,125}, {164,135}}, //44 right 2
+  {finn_main_Right1, {  0,  0,173,117}, {161,126}}, //45 right 3
+  {finn_main_Right1, {  0,117,173,118}, {162,128}}, //46 right 4
+  {finn_main_Right2, {  0,  0,172,121}, {162,131}}, //47 right 5
+  {finn_main_Right2, {  0,121,172,118}, {162,128}}, //48 right 6
+  {finn_main_Right3, {  0,  0,172,118}, {162,128}}, //49 right 7
 };
 
 static const Animation char_finn_anim[CharAnim_Max] = {
@@ -214,7 +208,7 @@ Character *Char_finn_New(fixed_t x, fixed_t y)
     this->character.health_i = 1;
 
     //health bar color
-    this->character.health_bar = 0xFFAD63D6;
+    this->character.health_bar = 0xFFADBFCA;
     
     this->character.focus_x = FIXED_DEC(-193 - -120,1);
     this->character.focus_y = FIXED_DEC(-6 - 123,1);
@@ -224,47 +218,44 @@ Character *Char_finn_New(fixed_t x, fixed_t y)
     this->arc_main = IO_Read("\\CHAR\\FINN.ARC;1");
     
     const char **pathp = (const char *[]){
-        "idle0.tim",
-        "idle1.tim",
-        "idle2.tim",
-        "idle3.tim",
-        "idle4.tim",
-        "idle5.tim",
-        "idle6.tim",
-        "idle7.tim",
-        "idle8.tim",
-        "idle9.tim",
-        "idle10.tim",
-        "idle11.tim",
-        "idle12.tim",
-        "idle13.tim",
-        "idle14.tim",
-        "idle15.tim",
-        "left0.tim",
-        "left1.tim",
-        "left2.tim",
-        "left3.tim",
-        "left4.tim",
-        "left5.tim",
-        "left6.tim",
-        "left7.tim",
-        "down0.tim",
-        "down1.tim",
-        "down2.tim",
-        "down3.tim",
-        "up0.tim",
-        "up1.tim",
-        "up2.tim",
-        "up3.tim",
-        "up4.tim",
-        "up5.tim",
-        "up6.tim",
-        "up7.tim",
-        "up8.tim",
-        "right0.tim",
-        "right1.tim",
-        "right2.tim",
-        "right3.tim",
+      "idle0.tim",
+      "idle1.tim",
+      "idle2.tim",
+      "idle3.tim",
+      "idle4.tim",
+      "idle5.tim",
+      "idle6.tim",
+      "idle7.tim",
+      "idle8.tim",
+      "idle9.tim",
+      "idle10.tim",
+      "idle11.tim",
+      "idle12.tim",
+      "idle13.tim",
+      "idle14.tim",
+      "idle15.tim",
+      "left0.tim",
+      "left1.tim",
+      "left2.tim",
+      "left3.tim",
+      "left4.tim",
+      "left5.tim",
+      "left6.tim",
+      "left7.tim",
+      "down0.tim",
+      "down1.tim",
+      "down2.tim",
+      "up0.tim",
+      "up1.tim",
+      "up2.tim",
+      "up3.tim",
+      "up4.tim",
+      "up5.tim",
+      "up6.tim",
+      "right0.tim",
+      "right1.tim",
+      "right2.tim",
+      "right3.tim",
         NULL
     };
     IO_Data *arc_ptr = this->arc_ptr;

@@ -167,9 +167,11 @@ Character *Char_finnalt_New(fixed_t x, fixed_t y)
     this->character.spec = 0;
     
     this->character.health_i = 1;
+    if (stage.stage_id == StageId_1_3)
+        this->character.health_i = 3;
 
     //health bar color
-    this->character.health_bar = 0xFFAD63D6;
+    this->character.health_bar = 0xFFADBFCA;
     
     this->character.focus_x = FIXED_DEC(-193 - -149,1);
     this->character.focus_y = FIXED_DEC(-6 - 74,1);

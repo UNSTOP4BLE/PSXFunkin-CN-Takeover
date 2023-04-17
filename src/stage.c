@@ -2130,11 +2130,15 @@ void Stage_Tick(void)
                             else
                                 opponent_anote = note_anims[note->type & 0x3][(note->type & NOTE_FLAG_ALT_ANIM) != 0];
                             note->type |= NOTE_FLAG_HIT;
-                            if (note->type & NOTE_FLAG_JAKE)
-                                stage.oppo2sing = "single";
-                            else
-                                stage.oppo2sing = "none";
+                            if (stage.stage_id == StageId_1_3)
+                            {
+                                if (note->type & NOTE_FLAG_JAKE)
+                                    stage.oppo2sing = "single";
+                                else
+                                    stage.oppo2sing = "none";
+                            }
                         }
+
                     }
                     
                     if (opponent_anote != CharAnim_Idle)

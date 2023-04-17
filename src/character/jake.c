@@ -162,10 +162,12 @@ Character *Char_jake_New(fixed_t x, fixed_t y)
     //Set character information
     this->character.spec = 0;
     
-    this->character.health_i = 1;
+    this->character.health_i = 2;
+    if (stage.stage_id == StageId_1_3)
+        this->character.health_i = 3;
 
     //health bar color
-    this->character.health_bar = 0xFFAD63D6;
+    this->character.health_bar = 0xFFFFFF33;
     
     this->character.focus_x = FIXED_DEC(-193 - -168,1);
     this->character.focus_y = FIXED_DEC(-6 - 150,1);

@@ -104,7 +104,7 @@ static const CharFrame char_bf_frame[] = {
   {bf_main_bf3, {  0,109,102,108}, {162,163}}, //14 leftb 2
 
   {bf_main_bf3, {102,109, 97,103}, {161,157}}, //15 leftm 1
-  {bf_main_bf8, {130, 104, 94,108}, {157,164 - 12}}, //16 leftm 2
+  {bf_main_bf8, {130, 104, 94,108}, {157,164}}, //16 leftm 2
 
   {bf_main_bf4, {104,  0, 95, 90}, {155,147}}, //17 down 1
   {bf_main_bf4, {  0,120, 94, 91}, {155,148}}, //18 down 2
@@ -122,7 +122,7 @@ static const CharFrame char_bf_frame[] = {
   {bf_main_bf6, {  0,120,101,120}, {140,177}}, //26 upb 2
 
   {bf_main_bf6, {101,120, 94,112}, {146,166}}, //27 upm 1
-  {bf_main_bf8, {  0,  0, 91,105}, {149,163-3}}, //28 upm 2 //1up -2dn
+  {bf_main_bf8, {  0,  0, 91,105}, {149,163+3}}, //28 upm 2
 
   {bf_main_bf7, { 91,  0,104,102}, {148,158}}, //29 right 1
   {bf_main_bf7, {  0,108,104,103}, {148,159}}, //30 right 2
@@ -132,10 +132,25 @@ static const CharFrame char_bf_frame[] = {
 
   {bf_main_bf4, {  0,  0,104,102}, {148,157}}, //33 rightm 1
   {bf_main_bf8, {  0,105,100,107}, {149,165-2}}, //34 rightm 2
+
+    {BF_ArcMain_Dead0, {  0,   0, 128, 128}, { 53,  98}}, //23 dead0 0
+    {BF_ArcMain_Dead0, {128,   0, 128, 128}, { 53,  98}}, //24 dead0 1
+    {BF_ArcMain_Dead0, {  0, 128, 128, 128}, { 53,  98}}, //25 dead0 2
+    {BF_ArcMain_Dead0, {128, 128, 128, 128}, { 53,  98}}, //26 dead0 3
+    
+    {BF_ArcDead_Dead1, {  0,   0, 128, 128}, { 53,  98}}, //27 dead1 0
+    {BF_ArcDead_Dead1, {128,   0, 128, 128}, { 53,  98}}, //28 dead1 1
+    {BF_ArcDead_Dead1, {  0, 128, 128, 128}, { 53,  98}}, //29 dead1 2
+    {BF_ArcDead_Dead1, {128, 128, 128, 128}, { 53,  98}}, //30 dead1 3
+    
+    {BF_ArcDead_Dead2, {  0,   0, 128, 128}, { 53,  98}}, //31 dead2 body twitch 0
+    {BF_ArcDead_Dead2, {128,   0, 128, 128}, { 53,  98}}, //32 dead2 body twitch 1
+    {BF_ArcDead_Dead2, {  0, 128, 128, 128}, { 53,  98}}, //33 dead2 balls twitch 0
+    {BF_ArcDead_Dead2, {128, 128, 128, 128}, { 53,  98}}, //34 dead2 balls twitch 1
 };
 
 static const Animation char_bf_anim[PlayerAnim_Max] = {
-    {2, (const u8[]){ 0,  1,  2,  3,  4,  5,  6, 7, 8, 9, 10, ASCR_BACK, 0}}, //CharAnim_Idle
+    {1, (const u8[]){ 0,  1,  2,  3,  4,  5,  6, 7, 8, 9, 10, ASCR_BACK, 0}}, //CharAnim_Idle
     {2, (const u8[]){ 11,  12, ASCR_BACK, 0}},             //CharAnim_Left
     {2, (const u8[]){ 13, 14, ASCR_BACK, 0}},       //CharAnim_LeftAlt
     {2, (const u8[]){ 17,  18, ASCR_BACK, 0}},             //CharAnim_Down
@@ -145,23 +160,23 @@ static const Animation char_bf_anim[PlayerAnim_Max] = {
     {2, (const u8[]){ 29, 30, ASCR_BACK, 0}},             //CharAnim_Right
     {2, (const u8[]){ 31, 32, ASCR_BACK, 0}},       //CharAnim_RightAlt
     
-    {1, (const u8[]){ 5, 20, 20, 21, ASCR_BACK, 1}},     //PlayerAnim_LeftMiss
-    {1, (const u8[]){ 7, 22, 22, 23, ASCR_BACK, 1}},     //PlayerAnim_DownMiss
-    {1, (const u8[]){ 9, 24, 24, 25, ASCR_BACK, 1}},     //PlayerAnim_UpMiss
-    {1, (const u8[]){11, 26, 26, 27, ASCR_BACK, 1}},     //PlayerAnim_RightMiss
+    {1, (const u8[]){ 15, 16, 16, 16, ASCR_BACK, 1}},     //PlayerAnim_LeftMiss
+    {1, (const u8[]){ 21, 22, 22, 22, ASCR_BACK, 1}},     //PlayerAnim_DownMiss
+    {1, (const u8[]){ 27, 28, 28, 28, ASCR_BACK, 1}},     //PlayerAnim_UpMiss
+    {1, (const u8[]){ 33, 34, 34, 34, ASCR_BACK, 1}},     //PlayerAnim_RightMiss
     
     {2, (const u8[]){13, 14, 15, ASCR_BACK, 1}},         //PlayerAnim_Peace
     {2, (const u8[]){16, 17, 18, 19, ASCR_REPEAT}},      //PlayerAnim_Sweat
     
-    {5, (const u8[]){28, 29, 30, 31, 31, 31, 31, 31, 31, 31, ASCR_CHGANI, PlayerAnim_Dead1}}, //PlayerAnim_Dead0
-    {5, (const u8[]){31, ASCR_REPEAT}},                                                       //PlayerAnim_Dead1
-    {3, (const u8[]){32, 33, 34, 35, 35, 35, 35, 35, 35, 35, ASCR_CHGANI, PlayerAnim_Dead3}}, //PlayerAnim_Dead2
-    {3, (const u8[]){35, ASCR_REPEAT}},                                                       //PlayerAnim_Dead3
-    {3, (const u8[]){36, 37, 35, 35, 35, 35, 35, ASCR_CHGANI, PlayerAnim_Dead3}},             //PlayerAnim_Dead4
-    {3, (const u8[]){38, 39, 35, 35, 35, 35, 35, ASCR_CHGANI, PlayerAnim_Dead3}},             //PlayerAnim_Dead5
+    {5, (const u8[]){28+12, 29+12, 30+12, 31+12, 31+12, 31+12, 31+12, 31+12, 31+12, 31+12, ASCR_CHGANI, PlayerAnim_Dead1}}, //PlayerAnim_Dead0
+    {5, (const u8[]){31+12, ASCR_REPEAT}},                                                       //PlayerAnim_Dead1
+    {3, (const u8[]){32+12, 33+12, 34+12, 35+12, 35+12, 35+12, 35+12, 35+12, 35+12, 35+12, ASCR_CHGANI, PlayerAnim_Dead3}}, //PlayerAnim_Dead2
+    {3, (const u8[]){35+12, ASCR_REPEAT}},                                                       //PlayerAnim_Dead3
+    {3, (const u8[]){36+12, 37+12, 35+12, 35+12, 35+12, 35+12, 35+12, ASCR_CHGANI, PlayerAnim_Dead3}},             //PlayerAnim_Dead4
+    {3, (const u8[]){38+12, 39+12, 35+12, 35+12, 35+12, 35+12, 35+12, ASCR_CHGANI, PlayerAnim_Dead3}},             //PlayerAnim_Dead5
     
-    {10, (const u8[]){35, 35, 35, ASCR_BACK, 1}}, //PlayerAnim_Dead4
-    { 3, (const u8[]){38, 39, 35, ASCR_REPEAT}},  //PlayerAnim_Dead5
+    {10, (const u8[]){35+12, 35+12, 35+12, ASCR_BACK, 1}}, //PlayerAnim_Dead4
+    { 3, (const u8[]){38+12, 39+12, 35+12, ASCR_REPEAT}},  //PlayerAnim_Dead5
 };
 
 //Boyfriend player functions
@@ -185,7 +200,7 @@ void Char_BF_Tick(Character *character)
     
     //Secret icon
     if (secret)
-        this->character.health_i = 3;
+        this->character.health_i = 4;
     else
         this->character.health_i = 0;
 
@@ -225,23 +240,6 @@ void Char_BF_Tick(Character *character)
             (stage.song_step & 0x7) == 0)
             character->set_anim(character, CharAnim_Idle);
         
-        //Stage specific animations
-        if (stage.note_scroll >= 0)
-        {
-            switch (stage.stage_id)
-            {
-                case StageId_1_4: //Tutorial peace
-                    if (stage.song_step > 64 && stage.song_step < 192 && (stage.song_step & 0x3F) == 60)
-                        character->set_anim(character, PlayerAnim_Peace);
-                    break;
-                case StageId_1_1: //Bopeebo peace
-                    if ((stage.song_step & 0x1F) == 28)
-                        character->set_anim(character, PlayerAnim_Peace);
-                    break;
-                default:
-                    break;
-            }
-        }
     }
     
     //Retry screen
