@@ -126,7 +126,7 @@ static void Stage_ScrollCamera(void)
     }
         
     //Update other camera stuff
-    stage.camera.bzoom = FIXED_MUL(stage.camera.zoom, stage.bump);
+    stage.camera.bzoom = FIXED_MUL(stage.camera.zoom, stage.character_bump);
 
 }
 
@@ -1276,6 +1276,15 @@ static void Stage_LoadStage(void)
     stage.back = stage.stage_def->back();
 }
 
+static void GetChart_Values(IO_Data* chart, Section** section, Note** note, Event** event)
+{
+    u8 *chart_byte = (u8*)(*chart);
+    //Directly use section, notes and events pointers
+    *section = (Section*)(chart_byte + 76);
+    *note = (Note*)(chart_byte + ((u16*)chart_byte)[36]);
+    *event = (Event*)(chart_byte + ((u16*)chart_byte)[36] + ((u16*)chart_byte)[37]);
+}
+
 static void Stage_LoadChart(void)
 {
     //Load stage data
@@ -1296,9 +1305,8 @@ static void Stage_LoadChart(void)
     stage.tg = *(u8*)(chart_byte + 65 + 4);
     stage.tb = *(u8*)(chart_byte + 66 + 4);
 
-    //Directly use section and notes pointers
-    stage.sections = (Section*)(chart_byte + 74);
-    stage.notes = (Note*)(chart_byte + ((u16*)stage.chart_data)[36]);
+    //Normal chart
+    GetChart_Values(&stage.chart_data, &stage.sections, &stage.notes, &stage.events);
         
     for (Note *note = stage.notes; note->pos != 0xFFFF; note++)
         stage.num_notes++;
@@ -1322,8 +1330,9 @@ static void Stage_LoadChart(void)
     
     stage.cur_section = stage.sections;
     stage.cur_note = stage.notes;
+    stage.cur_event = stage.events;
     
-    stage.speed = *((fixed_t*)stage.chart_data);
+    stage.speed = stage.ogspeed = *((fixed_t*)stage.chart_data);
     
     stage.step_crochet = 0;
     stage.time_base = 0;
@@ -1544,8 +1553,7 @@ void Stage_Load(StageId id, StageDiff difficulty, boolean story)
     stage.camera.y = stage.camera.ty;
     stage.camera.zoom = stage.camera.tz;
     
-    stage.bump = FIXED_UNIT;
-    stage.sbump = FIXED_UNIT;
+    stage.bump = stage.sbump = stage.character_bump = FIXED_UNIT;
     
     //Initialize stage according to mode
     stage.note_swap = (stage.mode == StageMode_Swap && (!(stage.prefs.middlescroll))) ? 4 : 0;
@@ -1553,6 +1561,9 @@ void Stage_Load(StageId id, StageDiff difficulty, boolean story)
     //Load music
     stage.note_scroll = 0;
     Stage_LoadMusic();
+
+    //Load Psych events
+    Events_Load();
     
     //Test offset
     stage.offset = 0;
@@ -1666,6 +1677,9 @@ static boolean Stage_NextLoad(void)
         
         //Load music
         Stage_LoadMusic();
+
+        //Load Psych events
+        Events_Load();
         
         //Reset timer
         Timer_Reset();
@@ -1970,9 +1984,16 @@ void Stage_Tick(void)
                 }
             }
 
+            //Psych events
+            Events_StartEvents();
+
             //Handle bump
             if ((stage.bump = FIXED_UNIT + FIXED_MUL(stage.bump - FIXED_UNIT, FIXED_DEC(95,100))) <= FIXED_DEC(1003,1000))
                 stage.bump = FIXED_UNIT;
+
+            if ((stage.character_bump = FIXED_UNIT + FIXED_MUL(stage.character_bump - FIXED_UNIT, FIXED_DEC(95,100))) <= FIXED_DEC(1003,1000))
+                stage.character_bump = FIXED_UNIT;
+
             stage.sbump = FIXED_UNIT + FIXED_MUL(stage.sbump - FIXED_UNIT, FIXED_DEC(60,100));
             
             if (playing && (stage.flag & STAGE_FLAG_JUST_STEP))
@@ -1986,11 +2007,14 @@ void Stage_Tick(void)
                 
                 //Bump screen
                 if (is_bump_step)
-                    stage.bump = FIXED_DEC(103,100);
-
+                {
+                    stage.bump += FIXED_DEC(3,100); //0.03
+                    stage.character_bump += FIXED_DEC(15,1000); //0.015
+                }
+                    
                 //Bump health every 4 steps
-                if ((stage.song_step & 0x3) == 0)
-                    stage.sbump = FIXED_DEC(103,100);
+                if ((stage.song_step % 4) == 0)
+                    stage.sbump += FIXED_DEC(3,100);
             }
             
             //Scroll camera
@@ -2302,7 +2326,7 @@ void Stage_Tick(void)
             
             //Reset stage state
             stage.flag = 0;
-            stage.bump = stage.sbump = FIXED_UNIT;
+            stage.bump = stage.sbump = stage.character_bump = FIXED_UNIT;
             
             //Change background colour to black
             Gfx_SetClear(0, 0, 0);

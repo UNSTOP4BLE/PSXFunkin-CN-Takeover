@@ -34,13 +34,90 @@ struct Note
 {
     uint16_t pos; //1/12 steps
     uint16_t type;
-    int16_t move;
+    uint16_t move;
+};
+
+//EVENTS
+#define EVENTS_FLAG_VARIANT 0xFFFC
+
+#define EVENTS_FLAG_SPEED     (1 << 2) //Change Scroll Speed
+#define EVENTS_FLAG_GF        (1 << 3) //Set GF Speed
+#define EVENTS_FLAG_CAMZOOM   (1 << 4) //Add Camera Zoom
+
+#define EVENTS_FLAG_PLAYED     (1 << 15) //Event has been already played
+
+struct Event
+{
+    //psych engine events
+    uint16_t pos; //1/12 steps
+    uint16_t event;
+    uint16_t value1;
+    uint16_t value2;
 };
 
 typedef int32_t fixed_t;
 
 #define FIXED_SHIFT (10)
 #define FIXED_UNIT  (1 << FIXED_SHIFT)
+
+//Made that function for compatibilty with older psych engine version
+void Events_Read(json& i, Event& event_src, std::vector<Event>& event_target, uint8_t position)
+{
+    //Start with 0 for avoid bugs
+    event_src.event = 0;
+
+    if (i[0 + position] == "Change Scroll Speed")
+        event_src.event |= EVENTS_FLAG_SPEED;
+
+    if (i[0 + position] == "Set GF Speed")
+        event_src.event |= EVENTS_FLAG_GF;
+
+    if (i[0 + position] == "Add Camera Zoom")
+        event_src.event |= EVENTS_FLAG_CAMZOOM;
+    
+    if (event_src.event & EVENTS_FLAG_VARIANT)
+    {
+        if (event_src.event & EVENTS_FLAG_SPEED)
+        {
+            //Default values
+            if (i[1 + position] == "")
+                i[1 + position] = "1";
+
+            if (i[2 + position] == "")
+                i[2 + position] = "0";
+        }
+
+        if (event_src.event & EVENTS_FLAG_GF)
+        {
+            //Default values
+            if (i[1 + position] == "")
+                i[1 + position] = "1";
+
+            if (i[2 + position] == "")
+                i[2 + position] = "0";
+        }
+        if (event_src.event & EVENTS_FLAG_CAMZOOM)
+        {
+            //Default values
+            if (i[1 + position] == "")
+                i[1 + position] = "0.015"; //cam zoom
+
+            if (i[2 + position] == "")
+                i[2 + position] = "0.03"; //hud zoom
+        }
+
+        //Get values information
+        std::string value1 =  i[1 + position];
+        std::string value2 =  i[2 + position];
+
+        //fixed values by 1024
+        event_src.value1 = std::stof(value1) * FIXED_UNIT;
+        event_src.value2 = std::stof(value2) * FIXED_UNIT;
+        std::cout << "Found event!: " << i[0 + position] << '\n';
+
+        event_target.push_back(event_src);
+    }
+}
 
 uint16_t PosRound(double pos, double crochet)
 {
@@ -97,6 +174,7 @@ int main(int argc, char *argv[])
     
     std::vector<Section> sections;
     std::vector<Note> notes;
+    std::vector<Event> events;
     
     uint16_t section_end = 0;
     int score = 0, dups = 0;
@@ -179,6 +257,20 @@ int main(int argc, char *argv[])
         else
             return a.pos < b.pos;
     });
+
+    //Read Events lol
+    for (auto &i : song_info["events"]) //Iterate through sections
+    {
+        for (auto &j : i[1])
+        {
+            //Push main event
+            Event new_event;
+
+            new_event.pos = (step_base * 12) + PosRound(((double)i[0] - milli_base) * 12.0, step_crochet);
+            //Newer psych engine events version
+            Events_Read(j, new_event, events, 0);
+        }
+    }
     
     //Push dummy section and note
     Section dum_section;
@@ -190,6 +282,12 @@ int main(int argc, char *argv[])
     dum_note.pos = 0xFFFF;
     dum_note.type = NOTE_FLAG_HIT;
     notes.push_back(dum_note);
+
+    Event dum_event;
+    dum_event.pos = 0xFFFF;
+    dum_event.event = EVENTS_FLAG_PLAYED;
+    dum_event.value1 = dum_event.value2 = 0;
+    events.push_back(dum_event);
     
     //Write to output
     std::ofstream out(std::string(argv[1]) + ".cht", std::ostream::binary);
@@ -212,7 +310,8 @@ int main(int argc, char *argv[])
     col = song_info["b"];
     out.put(col);
     out.put(0);
-    WriteWord(out, 74 + (sections.size() << 2));
+    WriteWord(out, 76 + (sections.size() << 2));
+    WriteWord(out, (notes.size() * 6)); //Get the event address(2 bytes)
     
     //Write sections
     for (auto &i : sections)
@@ -228,6 +327,15 @@ int main(int argc, char *argv[])
         WriteWord(out, i.type);
         i.move = 0;
         WriteWord(out, i.move);
+    }
+
+    //Write events
+    for (auto &i : events)
+    {
+        WriteWord(out, i.pos);
+        WriteWord(out, i.event);
+        WriteWord(out,i.value1);
+        WriteWord(out,i.value2);
     }
     return 0;
 }

@@ -17,6 +17,7 @@
 #include "object.h"
 #include "font.h"
 #include "debug.h"
+#include "events.h"
 
 #include "network.h"
 
@@ -214,9 +215,10 @@ typedef struct
     IO_Data chart_data;
     Section *sections;
     Note *notes;
+    Event* events;
     size_t num_notes;
     
-    fixed_t speed;
+    fixed_t ogspeed, speed;
     fixed_t step_crochet, step_time;
     fixed_t early_safe, late_safe, early_sus_safe, late_sus_safe;
     
@@ -235,7 +237,7 @@ typedef struct
         fixed_t tx, ty, tz, td;
         fixed_t bzoom;
     } camera;
-    fixed_t bump, sbump;
+    fixed_t bump, sbump, character_bump;
     
     StageBack *back;
     
@@ -247,6 +249,7 @@ typedef struct
     
     Section *cur_section; //Current section
     Note *cur_note; //First visible and hittable note, used for drawing and hit detection
+    Event* cur_event; //Current event
     
     fixed_t note_scroll, song_time, interp_time, interp_ms, interp_speed;
     
