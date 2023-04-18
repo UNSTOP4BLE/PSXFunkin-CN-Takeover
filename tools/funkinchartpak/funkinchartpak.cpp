@@ -120,39 +120,18 @@ void Events_Read(json& i, Event& event_src, std::vector<Event>& event_target, ui
 
             if (i[2 + position] == "")
                 i[2 + position] = "0";
-        }
-        //Get values information
-        std::string values[4];
-        char valchar[4][64];
-        int newindex = 0;
-        for (int ind = 0; ind < 4; ind ++)
-        {
-            if (event_src.event & EVENTS_FLAG_SHAKE && ind <= 2)
-            {
-                for (int j = 0; j < 64; j++)
-                {
-                    char ogvalchar[64] = i[ind+1 + position];
 
-                    if (i[ind+1 + position][j] != ',')
-                        valchar[ind + newindex][j] = i[ind+1 + position][j];
-                    else
-                    {
-                        j += 2; //skip a space and ,
-                        for (int h = 0; h < 64; h++)
-                            valchar[ind + newindex+1][h] =i[ind+1 + position][j+h];
-                        
-                        newindex += 1;
-                        break;
-                    }
-                }
+            //Get values information
+            char c;
+            std::string value_string = i[1 + position];
+            const char* value_char = value_string.c_str();
+
+            while ((c = *value_char++) != '\0')
+            {
+                if (c == ',')
+                 std::cout << "COCK" << std::endl;
             }
-            values[ind] = valchar[ind];
         }
-        //fixed values by 1024
-        event_src.value1 = std::stof(values[0]) * FIXED_UNIT;
-        event_src.value2 = std::stof(values[1]) * FIXED_UNIT;
-        event_src.value3 = std::stof(values[2]) * FIXED_UNIT;
-        event_src.value4 = std::stof(values[3]) * FIXED_UNIT;
         std::cout << "Found event!: " << i[0 + position] << '\n';
 
         event_target.push_back(event_src);
