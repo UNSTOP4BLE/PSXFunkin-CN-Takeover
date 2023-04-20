@@ -54,8 +54,8 @@ struct Event
     uint16_t event;
     uint16_t value1;
     uint16_t value2;
-    uint16_t value3;
-    uint16_t value4;
+    uint16_t value3 = 0;
+    uint16_t value4 = 0;
 };
 
 typedef int32_t fixed_t;
@@ -80,6 +80,11 @@ void Events_Read(json& i, Event& event_src, std::vector<Event>& event_target, ui
 
     if (i[0 + position] == "Screen Shake")
         event_src.event |= EVENTS_FLAG_SHAKE;
+
+    std::string value1;
+    std::string value2;
+    std::string value3 = "0";
+    std::string value4 = "0";
     
     if (event_src.event & EVENTS_FLAG_VARIANT)
     {
@@ -116,22 +121,27 @@ void Events_Read(json& i, Event& event_src, std::vector<Event>& event_target, ui
         {
             //Default values
             if (i[1 + position] == "")
-                i[1 + position] = "1";
+                i[1 + position] = "0.1, 1.5";
 
             if (i[2 + position] == "")
-                i[2 + position] = "0";
+                i[2 + position] = "0.1, 0.5";
 
             //Get values information
-            char c;
             std::string value_string = i[1 + position];
-            const char* value_char = value_string.c_str();
 
-            while ((c = *value_char++) != '\0')
-            {
-                if (c == ',')
-                 std::cout << "COCK" << std::endl;
-            }
+            std::size_t pos = value_string.find(",");
+            std::string first_value = value_string.substr(0,pos); //Read string before ','
+            std::string second_value = value_string.substr(pos + 1); //Read string after ','
+
+            event_src.value3 = std::stof(first_value) * FIXED_UNIT;
+            event_src.value4 = std::stof(second_value) * FIXED_UNIT;
         }
+
+        value1 =  i[1 + position];
+        value2 =  i[2 + position];
+
+        event_src.value1 = std::stof(value1) * FIXED_UNIT;
+        event_src.value2 = std::stof(value2) * FIXED_UNIT;
         std::cout << "Found event!: " << i[0 + position] << '\n';
 
         event_target.push_back(event_src);
