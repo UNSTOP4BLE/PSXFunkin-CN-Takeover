@@ -16,6 +16,7 @@
 #define EVENTS_FLAG_SPEED     (1 << 2) //Change Scroll Speed
 #define EVENTS_FLAG_GF        (1 << 3) //Set GF Speed
 #define EVENTS_FLAG_CAMZOOM   (1 << 4) //Add Camera Zoom
+#define EVENTS_FLAG_SHAKE     (1 << 5) //Add shake
 
 #define EVENTS_FLAG_PLAYED    (1 << 15) //Event has been already played
 
@@ -28,6 +29,8 @@ typedef struct
   u16 event;
   u16 value1;
   u16 value2;
+  u16 value3;
+  u16 value4;
 }Event;
 
 typedef struct

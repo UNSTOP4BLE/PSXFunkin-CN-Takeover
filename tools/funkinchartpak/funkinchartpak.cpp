@@ -121,27 +121,42 @@ void Events_Read(json& i, Event& event_src, std::vector<Event>& event_target, ui
         {
             //Default values
             if (i[1 + position] == "")
-                i[1 + position] = "0.1, 1.5";
+                i[1 + position] = "0, 0";
 
             if (i[2 + position] == "")
-                i[2 + position] = "0.1, 0.5";
+                i[2 + position] = "0, 0";
 
             //Get values information
-            std::string value_string = i[1 + position];
+            std::string value_string1 = i[1 + position];
 
-            std::size_t pos = value_string.find(",");
-            std::string first_value = value_string.substr(0,pos); //Read string before ','
-            std::string second_value = value_string.substr(pos + 1); //Read string after ','
+            std::size_t pos1 = value_string1.find(",");
+            std::string first_value1 = value_string1.substr(0,pos1); //Read string before ','
+            std::string second_value1 = value_string1.substr(pos1 + 1); //Read string after ','
 
-            event_src.value3 = std::stof(first_value) * FIXED_UNIT;
-            event_src.value4 = std::stof(second_value) * FIXED_UNIT;
+            event_src.value1 = std::stof(first_value1) * FIXED_UNIT;
+            event_src.value2 = std::stof(second_value1) * FIXED_UNIT;
+
+            std::string value_string2 = i[2 + position];
+
+            std::size_t pos2 = value_string2.find(",");
+            std::string first_value2 = value_string2.substr(0,pos2); //Read string before ','
+            std::string second_value2 = value_string2.substr(pos2 + 1); //Read string after ','
+
+            event_src.value3 = std::stof(first_value2) * FIXED_UNIT;
+            event_src.value4 = std::stof(second_value2) * FIXED_UNIT;
         }
 
-        value1 =  i[1 + position];
-        value2 =  i[2 + position];
+        else
+        {
+            value1 = i[1 + position];
+            value2 = i[2 + position];
 
-        event_src.value1 = std::stof(value1) * FIXED_UNIT;
-        event_src.value2 = std::stof(value2) * FIXED_UNIT;
+            event_src.value1 = std::stof(value1) * FIXED_UNIT;
+            event_src.value2 = std::stof(value2) * FIXED_UNIT;
+
+            event_src.value3 = 0;
+            event_src.value4 = 0;
+        }
         std::cout << "Found event!: " << i[0 + position] << '\n';
 
         event_target.push_back(event_src);
@@ -365,6 +380,8 @@ int main(int argc, char *argv[])
         WriteWord(out, i.event);
         WriteWord(out,i.value1);
         WriteWord(out,i.value2);
+        WriteWord(out,i.value3);
+        WriteWord(out,i.value4);
     }
     return 0;
 }

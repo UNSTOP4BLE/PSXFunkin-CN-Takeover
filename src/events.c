@@ -35,6 +35,15 @@ static void Events_Check(Event* event)
             stage.bump += event->value2;
             break;
         }
+        case EVENTS_FLAG_SHAKE: //Add Shake
+        {
+            stage.cam_shake.duration = event->value1;
+            stage.cam_shake.intensity = event->value2;
+
+            stage.hud_shake.duration = event->value3;
+            stage.hud_shake.intensity = event->value4;
+            break;
+        }
         default: //nothing lol
         break;
     }
@@ -42,8 +51,30 @@ static void Events_Check(Event* event)
 
 void Events_Tick(void)
 {
+    if (stage.hud_shake.duration > 0)
+    {
+        stage.hud_shake.shake += RandomRange(-stage.hud_shake.intensity, stage.hud_shake.intensity * 2);
+        stage.hud_shake.duration -= timer_dt;
+    }
+    else
+    {
+        stage.hud_shake.shake = 0;
+        stage.hud_shake.duration = 0;
+    }
+
+    if (stage.cam_shake.duration > 0)
+    {
+        stage.cam_shake.shake += RandomRange(-stage.cam_shake.intensity, stage.cam_shake.intensity * 2);
+        stage.cam_shake.duration -= timer_dt;
+    }
+    else
+    {
+        stage.cam_shake.shake = 0;
+        stage.cam_shake.duration = 0;
+    }
+
     //Scroll Speed!
-    stage.speed += (FIXED_MUL(stage.ogspeed, event_speed.value1) - stage.speed) / (((event_speed.value2 / 60) + 1));
+    stage.speed += (FIXED_MUL(stage.ogspeed, event_speed.value1) - stage.speed) / (((event_speed.value2 / 64) + 1));
 }
 
 void Events_StartEvents(void)

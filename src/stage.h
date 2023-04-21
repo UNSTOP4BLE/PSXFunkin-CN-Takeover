@@ -221,6 +221,12 @@ typedef struct
     fixed_t ogspeed, speed;
     fixed_t step_crochet, step_time;
     fixed_t early_safe, late_safe, early_sus_safe, late_sus_safe;
+    struct
+    {
+        fixed_t duration;
+        fixed_t intensity;
+        fixed_t shake;
+    } cam_shake, hud_shake;
     
     //Stage state
     char songname[64];
