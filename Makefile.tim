@@ -1,5 +1,6 @@
 all: \
 	iso/menu/menu.arc \
+	iso/menu/finnjake/bros.arc \
 	iso/menu/loading.tim \
 	iso/icon16.tim \
 	iso/font/boldfont.tim \
@@ -34,6 +35,7 @@ iso/%.arc:
 
 # Menu
 iso/menu/menu.arc: iso/menu/back.tim iso/menu/ng.tim iso/menu/story.tim iso/menu/title.tim
+iso/menu/finnjake/bros.arc: iso/menu/finnjake/bro0.tim iso/menu/finnjake/bro1.tim iso/menu/finnjake/bro2.tim
 
 # BF
 iso/bf/main.arc: iso/bf/bf0.tim iso/bf/bf1.tim iso/bf/bf2.tim iso/bf/bf3.tim iso/bf/bf4.tim iso/bf/bf5.tim iso/bf/bf6.tim iso/bf/bf7.tim iso/bf/bf8.tim iso/bf/dead0.tim

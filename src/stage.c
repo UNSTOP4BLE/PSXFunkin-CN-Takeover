@@ -650,6 +650,17 @@ void Stage_BlendTex(Gfx_Tex *tex, const RECT *src, const RECT_FIXED *dst, fixed_
     fixed_t wz = dst->w;
     fixed_t hz = dst->h;
     
+    if ((tex == &stage.tex_hud0) || (tex == &stage.tex_hud1))
+    {
+        xz += stage.hud_shake.shake;
+        yz += stage.hud_shake.shake;
+    }
+    else
+    {
+        xz += stage.cam_shake.shake;
+        yz += stage.cam_shake.shake;
+    }
+    
     if (stage.stage_id >= StageId_6_1 && stage.stage_id <= StageId_6_3)
     {
         //Handle HUD drawing

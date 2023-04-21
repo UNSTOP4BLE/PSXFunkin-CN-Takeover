@@ -40,6 +40,35 @@ typedef struct
     Animatable guys_animatable;
 } Back_Week1;
 
+void draw_rect(const RECT_FIXED *dst, u8 cr, u8 cg, u8 cb, fixed_t zoom)
+{
+    fixed_t xz = dst->x;
+    fixed_t yz = dst->y;
+    fixed_t wz = dst->w;
+    fixed_t hz = dst->h;
+
+    xz += stage.cam_shake.shake;
+    yz += stage.cam_shake.shake;
+    
+    fixed_t l = (screen.SCREEN_WIDTH2  << FIXED_SHIFT) + FIXED_MUL(xz, zoom);// + FIXED_DEC(1,2);
+    fixed_t t = (screen.SCREEN_HEIGHT2 << FIXED_SHIFT) + FIXED_MUL(yz, zoom);// + FIXED_DEC(1,2);
+    fixed_t r = l + FIXED_MUL(wz, zoom);
+    fixed_t b = t + FIXED_MUL(hz, zoom);
+    
+    l >>= FIXED_SHIFT;
+    t >>= FIXED_SHIFT;
+    r >>= FIXED_SHIFT;
+    b >>= FIXED_SHIFT;
+    
+    RECT sdst = {
+        l,
+        t,
+        r - l,
+        b - t,
+    };
+    Gfx_DrawRect(&sdst, cr, cg, cb);
+}
+
 static const CharFrame jake_frame[] = {
     {0, {  0,   0,  242, 137}, {151,  86}}, //0
     {1, {  0,   0,  244, 136}, {150,  87}}, //1 
@@ -210,9 +239,6 @@ void Back_Week1_DrawBG(StageBack *back)
     Back_Week1 *this = (Back_Week1*)back;
     
     fixed_t fx, fy;
-    
-    Gfx_SetClear(68, 130, 176);
-
     //Draw bg
     fx = stage.camera.x;
     fy = stage.camera.y;
@@ -245,7 +271,7 @@ void Back_Week1_DrawBG(StageBack *back)
     Animatable_Animate(&this->guys_animatable, (void*)this, Week1_guys_SetFrame);
     Week1_guys_Draw(this, FIXED_DEC(0,1) - fx, FIXED_DEC(80,1) - fy, FIXED_DEC(1,1));
 
-    RECT bg_src = {0, 0, 256, 256};
+    RECT bg_src = {0, 0, 255, 255};
     RECT_FIXED bg_dst = {
         FIXED_DEC(-450,1) - fx,
         FIXED_DEC(-240,1) - fy,
@@ -254,6 +280,7 @@ void Back_Week1_DrawBG(StageBack *back)
     };
     Debug_StageMoveDebug(&bg_dst, 4, fx, fy);
     Stage_DrawTex(&this->tex_back0, &bg_src, &bg_dst, stage.camera.bzoom);
+    draw_rect(&bg_dst, 68, 130, 176, stage.camera.bzoom);
 }
 
 void Back_Week1_Free(StageBack *back)
@@ -329,8 +356,6 @@ StageBack *Back_Week1_New(void)
     Animatable_Init(&this->guys_animatable, guys_anim);
     Animatable_SetAnim(&this->guys_animatable, 0);
     this->guys_frame = this->guys_tex_id = 0xFF; //Force art load
-
-    Gfx_SetClear(68, 130, 176);
-
+    Gfx_SetClear(0, 0, 0);
     return (StageBack*)this;
 }

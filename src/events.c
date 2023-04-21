@@ -38,10 +38,10 @@ static void Events_Check(Event* event)
         case EVENTS_FLAG_SHAKE: //Add Shake
         {
             stage.cam_shake.duration = event->value1;
-            stage.cam_shake.intensity = event->value2;
+            stage.cam_shake.intensity = event->value2 * 128;
 
             stage.hud_shake.duration = event->value3;
-            stage.hud_shake.intensity = event->value4;
+            stage.hud_shake.intensity = event->value4 * 128;
             break;
         }
         default: //nothing lol
