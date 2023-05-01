@@ -189,17 +189,17 @@ static void Menu_DifficultySelector(s32 x, s32 y)
     {
         if (pad_state.press & PAD_LEFT)
         {
-            if (menu.page_param.stage.diff > StageDiff_Easy)
-                menu.page_param.stage.diff--;
-            else
-                menu.page_param.stage.diff = StageDiff_Hard;
+      //      if (menu.page_param.stage.diff > StageDiff_Easy)
+      //          menu.page_param.stage.diff--;
+     //       else
+       //         menu.page_param.stage.diff = StageDiff_Hard;
         }
         if (pad_state.press & PAD_RIGHT)
         {
-            if (menu.page_param.stage.diff < StageDiff_Hard)
-                menu.page_param.stage.diff++;
-            else
-                menu.page_param.stage.diff = StageDiff_Easy;
+           // if (menu.page_param.stage.diff < StageDiff_Hard)
+          //      menu.page_param.stage.diff++;
+          ///  else
+           //     menu.page_param.stage.diff = StageDiff_Easy;
         }
     }
     
@@ -217,8 +217,10 @@ static void Menu_DifficultySelector(s32 x, s32 y)
     
     //Draw difficulty
     static const RECT diff_srcs[] = {
-        {  0, 96, 64, 18},
-        { 64, 96, 80, 18},
+        //{  0, 96, 64, 18},
+       
+        {144, 96, 64, 18},
+        {144, 96, 64, 18},// { 64, 96, 80, 18},
         {144, 96, 64, 18},
     };
     
@@ -880,7 +882,6 @@ void Menu_Tick(void)
                 {
                     //play confirm sound
                     Audio_PlaySound(Sounds[1], 0x3fff);
-                    strcpy(stage.songname, menu_options[menu.select].text);
                     menu.next_page = MenuPage_Stage;
                     menu.page_param.stage.id = menu_options[menu.select].stage;
                     menu.page_param.stage.story = false;
@@ -947,6 +948,15 @@ void Menu_Tick(void)
                 const char *text;
                 boolean difficulty;
             } menu_options[] = {
+                {StageId_1_1, "PORT DEVS", false},
+                {StageId_1_1, "    UNSTOPABLE", false},
+                {StageId_1_1, "    LUCKY", false},
+                {StageId_1_1, "    IGORSOU", false},
+                {StageId_1_1, "PLAYTESTERS", false},
+                {StageId_1_1, "    PICHUMAN", false},
+                {StageId_1_1, "    ZUK", false},
+                {StageId_1_1, "    LOBOSO MONDOL", false},
+                {StageId_1_1, "    LITTLE FABI", false},
                 {StageId_1_1, "FORK DEVS", false},
                 {StageId_1_1, "    UNSTOPABLE", false},
                 {StageId_1_1, "    IGORSOU", false},
@@ -954,24 +964,6 @@ void Menu_Tick(void)
                 {StageId_1_1, "    SPARK", false},
                 {StageId_1_1, "PSXFUNKIN DEVELOPER", false},
                 {StageId_1_1, "    CUCKYDEV", false},
-                {StageId_1_1, "COOL PEOPLE", false},
-                {StageId_1_1, "    IGORSOU", false},
-                {StageId_1_1, "    SPARK", false},
-                {StageId_1_1, "    DREAMCASTNICK", false},
-                {StageId_1_1, "    MAXDEV", false},
-                {StageId_1_1, "    CUCKYDEV", false},
-                {StageId_1_1, "    LUCKY", false},
-                {StageId_1_1, "    MRRUMBLEROSES", false},
-                {StageId_1_1, "    JOHN PAUL", false},
-                {StageId_1_1, "    VICTOR", false},
-                {StageId_1_1, "    GOOMBAKUNGFU", false},
-                {StageId_1_1, "    GTHREEYT", false},
-                {StageId_1_1, "    BILIOUS", false},
-                {StageId_1_1, "    ZERIBEN", false},
-                {StageId_1_1, "    GALAXY YT", false},
-                {StageId_1_1, "    NINTENDOBRO", false},
-                {StageId_1_1, "    LORD SCOUT", false},
-                {StageId_1_1, "    MR P", false},
             };
                 
             //Initialize page

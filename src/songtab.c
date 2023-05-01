@@ -57,26 +57,30 @@ void Tab_draw(void)
 {
     RECT icon = geticon((stage.mode == StageMode_Swap ? stage.player_state[0].character->health_i : stage.player_state[1].character->health_i));
     RECT_FIXED icon_dst = {FIXED_DEC(tab.x,1), FIXED_DEC(tab.y - 13,1), FIXED_DEC(46,1), FIXED_DEC(46,1)};
-  	
-  	if (stage.song_step < 0)
-  	{
-	    tab.iconzoom += Lerp(tab.iconzoom, FIXED_DEC(1,1), FIXED_DEC(10,100));
-	    tab.iconscale += Lerp(tab.iconscale, FIXED_DEC(1,1), FIXED_DEC(10,100));
-  		icon_dst.x -= tab.iconscale;
-  		icon_dst.y -= tab.iconscale;
-  		icon_dst.w = FIXED_MUL(icon_dst.w, tab.iconscale);
-  		icon_dst.h = FIXED_MUL(icon_dst.h, tab.iconscale);
-  	}
-   	else
- 	   bump(&tab.iconzoom);
+    
+    if (stage.prefs.downscroll)
+        icon_dst.y += FIXED_DEC(120,1);
+    if (stage.song_step < 0)
+    {
+        tab.iconzoom += Lerp(tab.iconzoom, FIXED_DEC(1,1), FIXED_DEC(10,100));
+        tab.iconscale += Lerp(tab.iconscale, FIXED_DEC(1,1), FIXED_DEC(10,100));
+        icon_dst.x -= tab.iconscale;
+        icon_dst.y -= tab.iconscale;
+        icon_dst.w = FIXED_MUL(icon_dst.w, tab.iconscale);
+        icon_dst.h = FIXED_MUL(icon_dst.h, tab.iconscale);
+    }
+    else
+       bump(&tab.iconzoom);
     RECT bar_fill = {252, 252, 1, 1};
     if (stage.song_step >= 20 && !stage.paused)
         tab.x += Lerp(FIXED_DEC(tab.x, 1), FIXED_DEC(-screen.SCREEN_WIDTH + -40,1), FIXED_DEC(6,100)) / 1024;
     RECT_FIXED bar_dst = {FIXED_DEC(tab.x,1), FIXED_DEC(tab.y,1), FIXED_DEC(144,1), FIXED_DEC(24,1)};
+    if (stage.prefs.downscroll)
+        bar_dst.y += FIXED_DEC(120,1);
 
     //draw text
-    stage.font_cdr.draw(&stage.font_cdr, stage.songname, FIXED_DEC(tab.x + 135,1), FIXED_DEC(tab.y+1,1), FontAlign_Right);
-    stage.font_cdr.draw_col(&stage.font_cdr, stage.credit, FIXED_DEC(tab.x + 155,1), FIXED_DEC(tab.y + 13,1), FontAlign_Right, stage.tr, stage.tg, stage.tb);
+    stage.font_cdr.draw(&stage.font_cdr, &stage_defs[stage.stage_id].name, FIXED_DEC(tab.x + 135,1), FIXED_DEC(stage.prefs.downscroll ? tab.y-1+51 : tab.y+1,1), FontAlign_Right);
+    stage.font_cdr.draw_col(&stage.font_cdr, stage.credit, FIXED_DEC(tab.x + 155,1), FIXED_DEC(stage.prefs.downscroll ? tab.y-13+51 : tab.y+13,1), FontAlign_Right, stage.tr, stage.tg, stage.tb);
 
     //draw icon
     Stage_DrawTex(&stage.tex_hud1, &icon, &icon_dst, tab.iconzoom);

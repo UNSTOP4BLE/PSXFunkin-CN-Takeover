@@ -1,4 +1,5 @@
     { //StageId_1_1 (Bopeebo)
+        "QUIET",
         //Characters
         {Char_BF_New,    FIXED_DEC(60,1),  FIXED_DEC(100,1)},
         {NULL},
@@ -13,9 +14,10 @@
         1, 1,
         XA_Bopeebo, 0,
         
-        StageId_1_2, STAGE_LOAD_FLAG
+        StageId_1_2, 0
     },
     { //StageId_1_2 (Fresh)
+        "MY BROTHER",
         //Characters
         {Char_BF_New,    FIXED_DEC(60,1),  FIXED_DEC(100,1)},
         {NULL},
@@ -30,9 +32,10 @@
         1, 2,
         XA_Fresh, 2,
         
-        StageId_1_3, STAGE_LOAD_FLAG
+        StageId_1_3, 0
     },
     { //StageId_1_3 (Dadbattle)
+        "BROTHERS IN ARMS",
         //Characters
         {Char_BF_New,    FIXED_DEC(60,1),  FIXED_DEC(100,1)},
         {NULL},
@@ -50,6 +53,7 @@
         StageId_1_3, 0
     },
     { //StageId_1_4 (Tutorial)
+        "QUIET RETRO",
         //Characters
         {Char_BF_New, FIXED_DEC(60,1),  FIXED_DEC(100,1)},
         {NULL},

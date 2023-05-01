@@ -281,15 +281,25 @@ void Back_Week1_DrawBG(StageBack *back)
     Debug_StageMoveDebug(&bg_dst, 4, fx, fy);
     Stage_DrawTex(&this->tex_back0, &bg_src, &bg_dst, stage.camera.bzoom);
     draw_rect(&bg_dst, 68, 130, 176, stage.camera.bzoom);
+    //hardcoding shit, im going to hell ik
+    if ((stage.stage_id == StageId_1_1 && stage.song_step >= 1919)
+     || (stage.stage_id == StageId_1_2 && (stage.song_step <= 0 || stage.song_step >= 1544))
+     || (stage.stage_id == StageId_1_3 && (stage.song_step <= 0 || stage.song_step >= 2172)))
+    {
+        stage.flash = FIXED_DEC(255,1);
+        stage.flashspd = FIXED_DEC(1024,1);
+    }
 }
 
 void Back_Week1_Free(StageBack *back)
 {
     Back_Week1 *this = (Back_Week1*)back;
-    
-    Mem_Free(this->arc_jake);
-    Mem_Free(this->arc_finn);
-    Mem_Free(this->arc_bubble);
+    if (stage.stage_id == StageId_1_4 || stage.stage_id == StageId_1_1)    
+        Mem_Free(this->arc_jake);
+    if (stage.stage_id == StageId_1_2)
+        Mem_Free(this->arc_finn);
+    if (stage.stage_id == StageId_1_3)
+        Mem_Free(this->arc_bubble);
     Mem_Free(this->arc_guys);
 
     //Free structure

@@ -496,40 +496,6 @@ void Stage_DrawTexCol(Gfx_Tex *tex, const RECT *src, const RECT_FIXED *dst, fixe
         yz += stage.cam_shake.shake;
     }
     
-    if (stage.stage_id >= StageId_6_1 && stage.stage_id <= StageId_6_3)
-    {
-        //Handle HUD drawing
-        if (tex == &stage.tex_hud0)
-        {
-            #ifdef STAGE_NOHUD
-                return;
-            #endif
-            if (src->y >= 128 && src->y < 224)
-            {
-                //Pixel perfect scrolling
-                xz &= FIXED_UAND;
-                yz &= FIXED_UAND;
-                wz &= FIXED_UAND;
-                hz &= FIXED_UAND;
-            }
-        }
-        else if (tex == &stage.tex_hud1)
-        {
-            #ifdef STAGE_NOHUD
-                return;
-            #endif
-        }
-        else
-        {
-            //Pixel perfect scrolling
-            xz &= FIXED_UAND;
-            yz &= FIXED_UAND;
-            wz &= FIXED_UAND;
-            hz &= FIXED_UAND;
-        }
-    }
-    else
-    {
         //Don't draw if HUD and is disabled
         if (tex == &stage.tex_hud0 || tex == &stage.tex_hud1)
         {
@@ -537,7 +503,7 @@ void Stage_DrawTexCol(Gfx_Tex *tex, const RECT *src, const RECT_FIXED *dst, fixe
                 return;
             #endif
         }
-    }
+   
     
     fixed_t l = (screen.SCREEN_WIDTH2  << FIXED_SHIFT) + FIXED_MUL(xz, zoom);// + FIXED_DEC(1,2);
     fixed_t t = (screen.SCREEN_HEIGHT2 << FIXED_SHIFT) + FIXED_MUL(yz, zoom);// + FIXED_DEC(1,2);
@@ -660,41 +626,7 @@ void Stage_BlendTex(Gfx_Tex *tex, const RECT *src, const RECT_FIXED *dst, fixed_
         xz += stage.cam_shake.shake;
         yz += stage.cam_shake.shake;
     }
-    
-    if (stage.stage_id >= StageId_6_1 && stage.stage_id <= StageId_6_3)
-    {
-        //Handle HUD drawing
-        if (tex == &stage.tex_hud0)
-        {
-            #ifdef STAGE_NOHUD
-                return;
-            #endif
-            if (src->y >= 128 && src->y < 224)
-            {
-                //Pixel perfect scrolling
-                xz &= FIXED_UAND;
-                yz &= FIXED_UAND;
-                wz &= FIXED_UAND;
-                hz &= FIXED_UAND;
-            }
-        }
-        else if (tex == &stage.tex_hud1)
-        {
-            #ifdef STAGE_NOHUD
-                return;
-            #endif
-        }
-        else
-        {
-            //Pixel perfect scrolling
-            xz &= FIXED_UAND;
-            yz &= FIXED_UAND;
-            wz &= FIXED_UAND;
-            hz &= FIXED_UAND;
-        }
-    }
-    else
-    {
+
         //Don't draw if HUD and is disabled
         if (tex == &stage.tex_hud0 || tex == &stage.tex_hud1)
         {
@@ -702,7 +634,7 @@ void Stage_BlendTex(Gfx_Tex *tex, const RECT *src, const RECT_FIXED *dst, fixed_
                 return;
             #endif
         }
-    }
+    
     
     fixed_t l = (screen.SCREEN_WIDTH2  << FIXED_SHIFT) + FIXED_MUL(xz, zoom);// + FIXED_DEC(1,2);
     fixed_t t = (screen.SCREEN_HEIGHT2 << FIXED_SHIFT) + FIXED_MUL(yz, zoom);// + FIXED_DEC(1,2);
@@ -1373,7 +1305,7 @@ static void Stage_LoadSFX(void)
     for (u8 i = 0; i < 4;i++)
     {
         char text[0x80];
-        sprintf(text, "\\SOUNDS\\INTRO%d%s.VAG;1", i, (stage.stage_id >= StageId_6_1 && stage.stage_id <= StageId_6_3) ? "P" : "");
+        sprintf(text, "\\SOUNDS\\INTRO%d%s.VAG;1", i, "");
         IO_FindFile(&file, text);
         u32 *data = IO_ReadFile(&file);
         Sounds[i] = Audio_LoadVAGData(data, file.size);
@@ -1535,9 +1467,6 @@ void Stage_Load(StageId id, StageDiff difficulty, boolean story)
     stage.story = story;
     
     //Load HUD textures
-    if (id >= StageId_6_1 && id <= StageId_6_3)
-        Gfx_LoadTex(&stage.tex_hud0, IO_Read("\\STAGE\\HUD0WEEB.TIM;1"), GFX_LOADTEX_FREE);
-    else
         Gfx_LoadTex(&stage.tex_hud0, IO_Read("\\STAGE\\HUD0.TIM;1"), GFX_LOADTEX_FREE);
     
     sprintf(iconpath, "\\STAGE\\HUD1-%d.TIM;1", stage.stage_def->week);
@@ -1711,20 +1640,6 @@ static boolean Stage_NextLoad(void)
     }
 }
 
-int shakecount;
-void violentlyshakethefuckingscreen(void) {
-    if (shakecount <= 10)
-    {
-        shakecount += 1;
-    }
-    else
-        shakecount = 0;
-}
-
-void violentlyshakethefuckingscreenNOW(void) {
-
-}
-
 void Stage_Tick(void)
 {
     SeamLoad:;
@@ -1819,14 +1734,20 @@ void Stage_Tick(void)
     {
         case StageState_Play:
         { 
-            violentlyshakethefuckingscreen();
             Tab_draw();
+            if (stage.flash > 0)
+            {
+                RECT flash = {0, 0, screen.SCREEN_WIDTH, screen.SCREEN_HEIGHT};
+                u8 flash_col = stage.flash >> FIXED_SHIFT;
+                Gfx_BlendRect(&flash, flash_col, flash_col, flash_col, 2);
+                stage.flash -= FIXED_MUL(stage.flashspd, timer_dt);
+            }
             if (stage.prefs.songtimer)
                 StageTimer_Draw();
             if (stage.prefs.debug)
                 Debug_StageDebug();
 
-            //FntPrint("step %d, beat %d", stage.song_step, stage.song_beat);
+            FntPrint("step %d, beat %d", stage.song_step, stage.song_beat);
 
             Stage_CountDown();
 
@@ -2026,10 +1947,6 @@ void Stage_Tick(void)
             {
                 //Check if screen should bump
                 boolean is_bump_step = (stage.song_step & 0xF) == 0;
-                
-                //M.I.L.F bumps
-                if (stage.stage_id == StageId_4_3 && stage.song_step >= (168 << 2) && stage.song_step < (200 << 2))
-                    is_bump_step = (stage.song_step & 0x3) == 0;
                 
                 //Bump screen
                 if (is_bump_step)
@@ -2253,30 +2170,6 @@ void Stage_Tick(void)
                     else
                         Stage_DrawTex(&stage.tex_hud0, &note_src, &note_dst, stage.bump);
                 }
-            }
-
-            //Hardcoded stage stuff
-            switch (stage.stage_id)
-            {
-                case StageId_1_2: //Fresh GF bop
-                    switch (stage.song_step)
-                    {
-                        case 16 << 2:
-                            stage.gf_speed = 2 << 2;
-                            break;
-                        case 48 << 2:
-                            stage.gf_speed = 1 << 2;
-                            break;
-                        case 80 << 2:
-                            stage.gf_speed = 2 << 2;
-                            break;
-                        case 112 << 2:
-                            stage.gf_speed = 1 << 2;
-                            break;
-                    }
-                    break;
-                default:
-                    break;
             }
             
             //Draw stage foreground

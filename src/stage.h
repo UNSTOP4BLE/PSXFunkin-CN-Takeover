@@ -48,32 +48,10 @@ typedef enum
     StageId_1_3, //Dadbattle
     StageId_1_4, //Tutorial
     
-    StageId_2_1, //Spookeez
-    StageId_2_2, //South
-    StageId_2_3, //Monster
-    
-    StageId_3_1, //Pico
-    StageId_3_2, //Philly
-    StageId_3_3, //Blammed
-    
-    StageId_4_1, //Satin Panties
-    StageId_4_2, //High
-    StageId_4_3, //MILF
-    
-    StageId_4_4, //Test
-    
-    StageId_5_1, //Cocoa
-    StageId_5_2, //Eggnog
-    StageId_5_3, //Winter Horrorland
-    
-    StageId_6_1, //Senpai
-    StageId_6_2, //Roses
-    StageId_6_3, //Thorns
-    
     StageId_Max
 } StageId;
 
-#define StageId_LastVanilla StageId_6_3
+#define StageId_LastVanilla StageId_1_4
 
 typedef enum
 {
@@ -111,6 +89,7 @@ typedef struct StageBack
 //Stage definitions
 typedef struct
 {
+    const char *name;
     //Characters
     struct
     {
@@ -219,6 +198,7 @@ typedef struct
     size_t num_notes;
     
     fixed_t ogspeed, speed;
+    fixed_t flash, flashspd;
     fixed_t step_crochet, step_time;
     fixed_t early_safe, late_safe, early_sus_safe, late_sus_safe;
     struct
@@ -229,7 +209,6 @@ typedef struct
     } cam_shake, hud_shake;
     
     //Stage state
-    char songname[64];
     char credit[64];
     u8 tr, tg, tb;
     

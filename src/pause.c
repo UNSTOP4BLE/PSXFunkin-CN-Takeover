@@ -39,7 +39,6 @@ void PausedState()
                 stage.pause_state = 1;
                 break;
             case 3: //Quit
-                stage.paused = false;
                 stage.trans = StageTrans_Menu;
                 Trans_Start();
                 pause_select = 0;
