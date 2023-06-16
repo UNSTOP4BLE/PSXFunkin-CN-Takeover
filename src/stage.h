@@ -39,7 +39,6 @@
 #define STAGE_LOAD_STAGE      (1 << 5) //Reload stage
 #define STAGE_LOAD_FLAG       (1 << 7)
 
-
 //Stage enums
 typedef enum
 {
@@ -89,7 +88,7 @@ typedef struct StageBack
 //Stage definitions
 typedef struct
 {
-    const char *name;
+    char name[64];
     //Characters
     struct
     {
@@ -293,6 +292,7 @@ void Stage_Load(StageId id, StageDiff difficulty, boolean story);
 void Stage_Unload();
 void Stage_Tick();
 
+extern StageDef stage_defs[StageId_Max];
 #ifdef PSXF_NETWORK
 void Stage_NetHit(Packet *packet);
 void Stage_NetMiss(Packet *packet);

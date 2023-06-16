@@ -53,8 +53,7 @@ static u32 Sounds[7];
 
 #include "stage/dummy.h"
 #include "stage/week1.h"
-
-static const StageDef stage_defs[StageId_Max] = {
+StageDef stage_defs[StageId_Max] = {
     #include "stagedef_disc1.h"
 };
 
@@ -1747,7 +1746,7 @@ void Stage_Tick(void)
             if (stage.prefs.debug)
                 Debug_StageDebug();
 
-            FntPrint("step %d, beat %d", stage.song_step, stage.song_beat);
+            //FntPrint("step %d, beat %d", stage.song_step, stage.song_beat);
 
             Stage_CountDown();
 
